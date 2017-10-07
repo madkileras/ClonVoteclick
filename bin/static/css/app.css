@@ -1,0 +1,116 @@
+:root {
+    --main-color: #006A5F;
+    --accent-color: #1E9387;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: #DDDDDD;
+}
+
+/* Barra de navegación */
+.navbar {
+    background: var(--main-color) !important;
+    border: none;
+    margin-bottom: 1em;
+}
+
+.navbar-btn {
+	float: left;
+	margin-right: 0.2em;
+    border-radius: 0.3em;
+    color: white;
+}
+
+.navbar-btn:hover {
+    background: var(--accent-color) !important;
+    color: white !important;
+}
+
+.navbar-btn.active {
+    background: var(--accent-color) !important;
+    color: white !important;
+    box-shadow: none;
+}
+
+/* Paneles */
+.panel-heading {
+    background: var(--accent-color) !important;
+}
+
+.panel-heading > h4 {
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.panel-footer {
+    background: #CFCFCF !important;
+}
+
+/* Otros elementos */
+a {
+    color: var(--main-color);
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+.thumbnail {
+    background: #EEEEEE !important;
+}
+
+.img-circle {
+    padding: 1em;
+}
+
+/* Material Checkbox */
+.checkbox label {
+    padding-left: 24px;
+}
+  
+input[type="checkbox"] {
+    display: none;
+}
+    
+input[type="checkbox"] + .box:before,
+input[type="checkbox"] + .box:after {
+    transition: all .3s;
+}
+    
+input[type="checkbox"] + .box:after {
+    position: absolute;
+    left: 4px;
+    top: 3px;
+    margin-top: -5px;
+    margin-left: -4px;
+    display: inline-block;
+    content: ' ';
+    width: 20px;
+    height: 20px;
+    border: 2px solid #999;
+    border-radius: 2px;
+    background-color: #fff;
+    z-index: 1000;
+}
+    
+input[type="checkbox"]:checked + .box:after {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+    
+input[type="checkbox"]:checked + .box:before {
+    transform: rotate(45deg);
+    position: absolute;
+    left: 7px;
+    top: 0px;
+    width: 6px;
+    height: 13px;
+    border-width: 2px;
+    border-style: solid;
+    border-top: 0;
+    border-left: 0;
+    border-color: #fff;
+    content: '';
+    z-index: 10000;
+}
