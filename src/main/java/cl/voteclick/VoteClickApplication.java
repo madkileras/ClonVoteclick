@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class VoteclickApplication {
+public class VoteClickApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(VoteclickApplication.class, args);
+		SpringApplication.run(VoteClickApplication.class, args);
 	}
 }
