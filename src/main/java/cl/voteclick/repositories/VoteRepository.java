@@ -1,4 +1,4 @@
-package cl.voteclick.controller;
+package cl.voteclick.repositories;
 
 import cl.voteclick.model.Vote;
 import org.springframework.data.repository.CrudRepository;
@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import javax.transaction.Transactional;
 
 @Transactional
-public interface VoteController extends CrudRepository<Vote,Long>{
+public interface VoteRepository extends CrudRepository<Vote,Long>{
 
 }
