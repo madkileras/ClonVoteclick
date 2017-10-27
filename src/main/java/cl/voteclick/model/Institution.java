@@ -16,6 +16,12 @@ public class Institution {
     public Institution(){
 
     }
+
+    public Institution(String name){
+
+        this.name=name;
+
+    }
     public Long getInstitutionId() {
         return id;
     }
