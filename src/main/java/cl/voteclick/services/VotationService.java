@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins="http://localhost:9090/services")
 @RestController
 @RequestMapping("/votations")
-public class CreateVotationService {
+public class VotationService {
 
     @Autowired
     VotationRepository votationRepository;
