@@ -1,5 +1,7 @@
 package cl.voteclick.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -34,7 +36,7 @@ public class Vote {
         this.options = options;
     }
 
-
+    @JsonIgnore
     public Votation getVotations() {
         return votations;
     }

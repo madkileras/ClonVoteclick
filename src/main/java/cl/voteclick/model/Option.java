@@ -1,5 +1,7 @@
 package cl.voteclick.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 @Entity
 @Table(name="options")
@@ -32,7 +34,7 @@ public class Option {
     public void setText(String text) {
         this.text = text;
     }
-
+    @JsonIgnore
     public Votation getVotations() {
         return votations;
     }

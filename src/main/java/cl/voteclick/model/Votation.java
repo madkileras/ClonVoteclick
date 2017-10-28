@@ -1,10 +1,14 @@
 package cl.voteclick.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
+
 @Entity
 @Table(name="votations")
+
 public class Votation {
 
     @Id
@@ -19,6 +23,7 @@ public class Votation {
     @ManyToOne
     @JoinColumn(name="Institution_id")
     private Institution institutions;
+
     @ManyToMany(mappedBy = "votations")
     private Set<Voter> voters;
     public Votation(){
@@ -52,7 +57,7 @@ public class Votation {
     public Set<Vote> getVotes(){
         return votes;
     }
-
+    @JsonIgnore
     public void setVotes(Set<Vote> votes) {
         this.votes = votes;
     }
@@ -65,7 +70,9 @@ public class Votation {
         this.options = options;
     }
 
+    @JsonIgnore
     public Institution getInstitutions() {
+
         return institutions;
     }
 
@@ -73,6 +80,7 @@ public class Votation {
         this.institutions = institutions;
     }
 
+    @JsonIgnore
     public Set<Voter> getVoters() {
         return voters;
     }
