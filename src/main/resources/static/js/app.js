@@ -18,6 +18,10 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/contact.html',
             controller: 'MainController'
         })
+        .when('/registro', {
+            templateUrl: 'js/views/register.html',
+            controller: 'MainController'
+        })
         .otherwise({
             redirectTo: '/'
         });
