@@ -12,7 +12,7 @@ import java.util.Set;
 public class Votation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private Long id;
     private String title;
     private String votationType;
@@ -70,7 +70,7 @@ public class Votation {
         this.options = options;
     }
 
-    @JsonIgnore
+
     public Institution getInstitutions() {
 
         return institutions;

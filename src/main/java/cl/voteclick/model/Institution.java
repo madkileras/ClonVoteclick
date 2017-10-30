@@ -1,15 +1,17 @@
 package cl.voteclick.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 @Entity
 @Table(name="institutions")
 public class Institution {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
-    @OneToMany(mappedBy= "id", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy= "institutions", fetch=FetchType.EAGER)
     private List<Votation> votations;
     @ManyToMany(mappedBy = "institutions")
     private List<Voter> voters;
@@ -37,7 +39,7 @@ public class Institution {
     public void setName(String name) {
         this.name = name;
     }
-
+    @JsonIgnore
     public List<Votation> getVotations() {
         return votations;
     }
@@ -45,7 +47,7 @@ public class Institution {
     public void setVotations(List<Votation> votations) {
         this.votations = votations;
     }
-
+    @JsonIgnore
     public List<Voter> getVoters() {
         return voters;
     }

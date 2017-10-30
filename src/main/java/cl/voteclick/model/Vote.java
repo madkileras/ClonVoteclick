@@ -9,7 +9,7 @@ import java.util.Set;
 @Table(name = "Votes")
 public class Vote {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long voteId;
     @ElementCollection(targetClass=Integer.class)
     private Set<Integer> options;

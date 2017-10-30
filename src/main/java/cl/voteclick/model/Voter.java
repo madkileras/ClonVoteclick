@@ -7,7 +7,7 @@ import java.util.List;
 @Table(name = "voters")
 public class Voter {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
     private String rut;
