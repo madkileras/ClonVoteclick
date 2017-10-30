@@ -1,5 +1,7 @@
 package cl.voteclick.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 @Entity
@@ -10,6 +12,7 @@ public class Institution {
     private Long id;
     private String name;
     @OneToMany(mappedBy= "id", fetch=FetchType.EAGER)
+    @JsonIgnore
     private List<Votation> votations;
     @ManyToMany(mappedBy = "institutions")
     private List<Voter> voters;

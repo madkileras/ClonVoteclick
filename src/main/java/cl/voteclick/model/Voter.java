@@ -1,5 +1,7 @@
 package cl.voteclick.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,6 +14,7 @@ public class Voter {
     private String name;
     private String rut;
     @ManyToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
     @JoinTable(name = "voter_vinculated", joinColumns = @JoinColumn(name = "voter_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "institution_id", referencedColumnName = "id"))
     private List<Institution> institutions;
     @ManyToMany(cascade = CascadeType.ALL)
