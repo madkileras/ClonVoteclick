@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Option {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long optionId;
     private String text;
     @ManyToOne

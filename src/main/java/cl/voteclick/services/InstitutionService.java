@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins="http://localhost:9090/services")
+@CrossOrigin
 @RestController
-@RequestMapping("/institution")
+@RequestMapping("/institutions")
 public class InstitutionService {
     @Autowired
     InstitutionRepository institutionRepository;

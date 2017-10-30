@@ -8,10 +8,10 @@ import java.util.List;
 @Table(name="institutions")
 public class Institution {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
-    @OneToMany(mappedBy= "id", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy= "institutions", fetch=FetchType.EAGER)
     @JsonIgnore
     private List<Votation> votations;
     @ManyToMany(mappedBy = "institutions")
@@ -40,7 +40,7 @@ public class Institution {
     public void setName(String name) {
         this.name = name;
     }
-
+    @JsonIgnore
     public List<Votation> getVotations() {
         return votations;
     }
@@ -48,7 +48,7 @@ public class Institution {
     public void setVotations(List<Votation> votations) {
         this.votations = votations;
     }
-
+    @JsonIgnore
     public List<Voter> getVoters() {
         return voters;
     }
