@@ -114,3 +114,8 @@ input[type="checkbox"]:checked + .box:before {
     content: '';
     z-index: 10000;
 }
+
+.table > tbody > tr:hover {
+  background-color: #F2F2F2;
+  cursor: pointer;
+}

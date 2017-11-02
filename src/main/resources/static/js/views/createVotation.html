@@ -1,0 +1,86 @@
+<div class="container" ng-controller="TableController">
+	<div class="panel panel-default">
+        <div class="panel-heading text-center">
+            <h4>{{ title }}</h4>
+        </div>
+    	<div class="panel-body">
+    		<div class = "row">
+				<div class =  "col-md-4">
+					<div class = "col-md-6">
+						<a href = "#"><img src = "../../img/teamwork.svg" width="100" height="100"></a>
+						<div class = "caption">
+							<p>Voto Alternativo</p>
+						</div>
+					</div>
+					<div class = "col-md-6">
+						<a href = "#"><img src = "../../img/list.svg" width="100" height="100"></a>
+						<div class = "caption">
+							<p>Voto por bloque</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class = "col-md-2">
+				</div>
+
+				<div class = "col-md-6">
+					<form class = "form-horizontal" role = "form">
+						<div class = "form-group">
+							<label for = "name" class = "col-md-4 control-label">Nombre Votación</label>
+							<div class = "col-md-6">
+								<input ng-model = "newVotation.name" type = "text" class = "form-control">
+							</div>
+						</div>
+						<div class = "form-group" ng-controller = "DateController as dateCtrl">
+							<label for = "dateStart" class = "col-md-4 control-label">Fecha inicio</label>
+							<div class = "col-md-6">
+								<input ng-model = "newVotation.dateStart" type = "date" id = "dateStart" class = "form-control" placeholder="yyyy-MM-dd" min = "2017-01-01" max = "9999-12-31" required/>
+								
+							</div>
+						</div>
+						<div class = "form-group" ng-controller = "DateController as dateCtrl">
+							<label for = "dateEnd" class = "col-md-4 control-label">Fecha termino</label>
+							<div class = "col-md-6">
+								<input ng-model = "newVotation.dateEnd" type = "date" id = "dateEnd" class = "form-control" placeholder="{{minDate | dateStart:'yyyy-MM-dd'}}" min = "{{minDate | dateStart:'yyyy-MM-dd'}}" max = "9999-12-31" required/>
+							</div>
+						</div>
+					</form>
+				</div>
+
+    		</div>
+			<hr>
+			<h3>Candidatos</h3>
+			<div class = "container">
+				<table class = "table">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Nombre Candidato</th>
+							<th>Foto</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr ng-repeat = "item in lista">
+							<td style = "cursor: not-allowed;"> {{ title }} </td>
+							<td editable-td row = "{{index}}" field ="nombres">{{item.nombres}}</td>
+							<td><span class="glyphicon glyphicon-trash" style="cursor: pointer;" ng-click='eliminar(item)' /></td>
+            			</tr>
+					</tbody>
+				</table>
+				<div class="btn-group">
+          			<button class="btn btn-default" ng-click='agregar()'>
+            		<span class="glyphicon glyphicon-plus"></span>
+          			</button>
+        		</div>
+        		<br><br>
+        		<div id='JSON' /></div>
+    		</div>
+	</div>
+</div>
+
+
+         
+        
+        
+   

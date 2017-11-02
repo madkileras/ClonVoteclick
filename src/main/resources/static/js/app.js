@@ -22,6 +22,11 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/register.html',
             controller: 'MainController'
         })
+        .when('/nuevaVotacion', {
+            templateUrl: 'js/views/createVotation.html',
+            controller: 'TableController'
+        })
+
         .otherwise({
             redirectTo: '/'
         });
