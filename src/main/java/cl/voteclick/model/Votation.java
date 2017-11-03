@@ -1,8 +1,10 @@
 package cl.voteclick.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 
@@ -26,6 +28,17 @@ public class Votation {
 
     @ManyToMany(mappedBy = "votations")
     private Set<Voter> voters;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "dd/MM/yyyy hh:mm") //this is for display and parsing, not storage
+    private Date initDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm") //this is for display and parsing, not storage
+    private Date endDate;
+
+
+
     public Votation(){
     }
 
@@ -89,4 +102,19 @@ public class Votation {
         this.voters = voters;
     }
 
+    public Date getInitDate(){
+        return initDate;
+    }
+
+    public void setInitDate(Date date){
+        this.initDate=date;
+    }
+
+    public Date getEndDate(){
+        return endDate;
+    }
+
+    public void setEndDate(Date date){
+        this.endDate=date;
+    }
 }

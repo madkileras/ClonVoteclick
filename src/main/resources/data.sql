@@ -22,11 +22,11 @@ INSERT INTO public.voter_vinculated(voter_id, institution_id) VALUES (5, 3);
 INSERT INTO public.voter_vinculated(voter_id, institution_id) VALUES (1, 3);
 INSERT INTO public.voter_vinculated(voter_id, institution_id) VALUES (6, 3);
 
-INSERT INTO public.votations(id, title, votation_type, institution_id) VALUES (1, 'Votacion centro alumnos informatica 2018', 'por bloque',2);
-INSERT INTO public.votations(id, title, votation_type, institution_id) VALUES (2, 'Votacion paseo fin de año', 'preferencial',4);
-INSERT INTO public.votations(id, title, votation_type, institution_id) VALUES (3, 'Votacion delegado de genero CEII 2017', 'alternativa',3);
-INSERT INTO public.votations(id, title, votation_type, institution_id) VALUES (4, 'Votacion nuevo integrante de cultura CEII', 'por bloque', 2);
-INSERT INTO public.votations(id, title, votation_type, institution_id) VALUES (5, 'Votacion gerente tingeso', 'por bloque', 1);
+INSERT INTO public.votations(id, title, votation_type, institution_id,init_date,end_date) VALUES (1, 'Votacion centro alumnos informatica 2018', 'por bloque',2,'11/20/2017 00:00:00','11/20/2017');
+INSERT INTO public.votations(id, title, votation_type, institution_id,init_date,end_date) VALUES (2, 'Votacion paseo fin de año', 'preferencial',4,'11/20/2017 00:00:00','11/20/2017 00:00:00');
+INSERT INTO public.votations(id, title, votation_type, institution_id,init_date,end_date) VALUES (3, 'Votacion delegado de genero CEII 2017', 'alternativa',3,'11/20/2017 00:00:00','11/20/2017 00:00:00');
+INSERT INTO public.votations(id, title, votation_type, institution_id,init_date,end_date) VALUES (4, 'Votacion nuevo integrante de cultura CEII', 'por bloque', 2,'11/20/2017 00:00:00','11/20/2017 00:00:00');
+INSERT INTO public.votations(id, title, votation_type, institution_id,init_date,end_date) VALUES (5, 'Votacion gerente tingeso', 'por bloque', 1,'11/20/2017 00:00:00','11/20/2017 00:00:00');
 
 INSERT INTO public.options(option_id, text, votation_id) VALUES (1, 'lista glinux', 1);
 INSERT INTO public.options(option_id, text, votation_id) VALUES (2, 'paralelista', 1);
