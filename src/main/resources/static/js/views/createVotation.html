@@ -5,26 +5,20 @@
         </div>
     	<div class="panel-body">
     		<div class = "row">
-				<div class =  "col-md-4">
-					<div class = "col-md-6">
-						<a href = "#"><img src = "../../img/teamwork.svg" width="100" height="100"></a>
-						<div class = "caption">
-							<p>Voto Alternativo</p>
-						</div>
-					</div>
-					<div class = "col-md-6">
-						<a href = "#"><img src = "../../img/list.svg" width="100" height="100"></a>
-						<div class = "caption">
-							<p>Voto por bloque</p>
-						</div>
-					</div>
-				</div>
-
-				<div class = "col-md-2">
-				</div>
-
-				<div class = "col-md-6">
+    			<div class = "col-md-6">
+					<h3>Datos votación</h3>
+					<br><br>
 					<form class = "form-horizontal" role = "form">
+						<div class = "form-group">
+							<label for = "typeVotation" class = "col-md-4 control-label">Tipo de votación</label>
+							<div class = "col-md-6">
+								<select ng-model = "newVotation.type" class = "form-control">
+									<option value = "">
+									<option value = "alternativo">Voto Alternativo</option>
+									<option value = "bloque">Voto por bloque</option>
+								</select>
+							</div>
+						</div>
 						<div class = "form-group">
 							<label for = "name" class = "col-md-4 control-label">Nombre Votación</label>
 							<div class = "col-md-6">
@@ -45,6 +39,32 @@
 						</div>
 					</form>
 				</div>
+				
+				<div class =  "col-md-6" ng-controller = "TypeController">
+					<h3>Tipos de votaciones</h3>
+					<br><br>
+					<div class = "col-md-6">
+						<img src = "../../img/teamwork.svg" width="100" height="100" ng-click = "showVotation1()" style="cursor:pointer;">
+						<p>Voto Alternativo</p>
+					</div>
+					<div class = "col-md-6">
+						<img src = "../../img/list.svg" width="100" height="100" ng-click = "showVotation2()" style="cursor:pointer;">
+						<div class = "caption">
+							<p>Voto por bloque</p>
+						</div>
+					</div>
+					<br><br>
+					<div ng-show = "show1">
+						<h5>Voto Alternativo</h5>
+						<p>En este tipo de votación se elige al ganador por mayoría absoluta de entre dos o más candidatos.</p>
+						<p>El votante deberá ordenar sus preferencias, de más preferido a menos preferido.</p>
+						<p>Para más información vea nuestra página de servicios.</p>
+					</div>
+					<div ng-show = "show2">
+						<h5>Voto por bloque</h5>
+						<p>En este tipo de votación usted puede ... .... ......</p>
+					</div>
+				</div>
     		</div>
 			<hr>
 			<h3>Candidatos</h3>
@@ -55,13 +75,16 @@
 							<th>#</th>
 							<th>Nombre Candidato</th>
 							<th>Foto</th>
+							<th>Datos</th>
 						</tr>
 					</thead>
 
 					<tbody>
 						<tr ng-repeat = "item in lista">
-							<td style = "cursor: not-allowed;"> {{ title }} </td>
-							<td editable-td row = "{{index}}" field ="nombres">{{item.nombres}}</td>
+							<td style = "cursor: not-allowed;"> {{$index + 1}} </td>
+							<td editable-td row = "{{$index}}" field ="name">{{item.name}}</td>
+							<td editable-td row = "{{$index}}" field ="picture">{{item.picture}}</td>
+							<td editable-td row = "{{$index}}" field ="data">{{item.data}}</td>
 							<td><span class="glyphicon glyphicon-trash" style="cursor: pointer;" ng-click='eliminar(item)'></span></td>
             			</tr>
 					</tbody>
