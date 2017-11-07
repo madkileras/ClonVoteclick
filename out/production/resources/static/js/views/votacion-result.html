@@ -1,0 +1,22 @@
+<div class="container" ng-controller="VotationResultController">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h4>Resultado de votación "{{ votacion.nombre }}"</h4>
+            </div>
+            <div class="panel-body" style="height: 70vh">
+                <div class="row" style="height: 100%">
+                    <div class="col-md-8" style="height: 100%">
+                        <canvas id="resultados" style="width: 100%; height: 100%"></canvas>
+                    </div>
+                    <div class="col-md-4 resultado">
+                        <h4><b>El ganador(a) es...</b></h4>
+                        <h3>{{ votacion.ganador.nombre }}</h3>
+                        <br>
+                        <img src="{{ votacion.ganador.imagen }}" class="img-responsive img-circle">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
