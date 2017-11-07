@@ -127,3 +127,19 @@ input[type="checkbox"]:checked + .box:before {
   background-color: #F2F2F2;
   cursor: pointer;
 }
+
+.btn-default{
+    background-color: #1e9387;
+    border-color: #1e9387;
+}
+
+input[type="file"]{
+    display:none;
+}
+
+.my-file{
+    display:inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  
+}
