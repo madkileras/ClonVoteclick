@@ -11,7 +11,7 @@
 						<div class = "form-group">
 							<label for = "typeVotation" class = "col-md-4 control-label">Tipo de votación</label>
 							<div class = "col-md-6">
-								<select ng-model = "newVotation.type" class = "form-control">
+								<select ng-model = "newVotation.votationType" class = "form-control">
 									<option value = ""></option>
 									<option value = "alternativo">Voto Alternativo</option>
 									<option value = "bloque">Voto por bloque</option>
@@ -21,19 +21,19 @@
 						<div class = "form-group">
 							<label for = "name" class = "col-md-4 control-label">Nombre Votación</label>
 							<div class = "col-md-6">
-								<input ng-model = "newVotation.name" type = "text" class = "form-control">
+								<input ng-model = "newVotation.title" type = "text" class = "form-control">
 							</div>
 						</div>
 						<div class = "form-group" ng-controller = "DateController">
 							<label for = "dateStart" class = "col-md-4 control-label">Fecha inicio</label>
 							<div class = "col-md-6">
-								<input ng-model = "newVotation.dateStart" type = "date" id = "dateStart" class = "form-control" placeholder="yyyy-MM-dd" min = "{{ start }}" required/>
+								<input ng-model = "newVotation.initDate" type = "date" id = "dateStart" class = "form-control" placeholder="yyyy-MM-dd" min = "{{ start }}" required/>
 							</div>
 						</div>
 						<div class = "form-group" ng-controller = "DateController">
 							<label for = "dateEnd" class = "col-md-4 control-label">Fecha termino</label>
 							<div class = "col-md-6">
-								<input ng-model = "newVotation.dateEnd" type = "date" id = "dateEnd" class = "form-control" placeholder="yyyy-MM-dd" min = "{{  endRestrict }}" required/>
+								<input ng-model = "newVotation.endDate" type = "date" id = "dateEnd" class = "form-control" placeholder="yyyy-MM-dd" min = "{{  endRestrict }}" required/>
 							</div>
 						</div>
 						<div class = "form-group">
@@ -47,6 +47,13 @@
 								<input id = "file-upload" type  = "file"/>
 							</div>	
 						</div>
+
+						<div class="form-group">
+							<div class="col-md-offset-4">
+								<button ng-click="send()" type="submit" class="btn btn-default">Crear Votación</button>
+							</div>
+						</div>
+
 					</form>
 				</div>
 				<div class = "col-md-6">
@@ -65,7 +72,7 @@
 							<tbody>
 								<tr ng-repeat = "item in lista">
 									<td style = "cursor: not-allowed;"> {{$index + 1}} </td>
-									<td editable-td row = "{{$index}}" field ="name">{{item.name}}</td>
+									<td editable-td row = "{{$index}}" field ="text">{{item.text}}</td>
 									<!--<td editable-td row = "{{$index}}" field ="picture">{{item.picture}}</td>
 									<td editable-td row = "{{$index}}" field ="data">{{item.data}}</td>-->
 									<td><span class="glyphicon glyphicon-trash" style="cursor: pointer;" ng-click='eliminar(item)'></span></td>
@@ -77,6 +84,7 @@
 		            		<span class="glyphicon glyphicon-plus"></span>
 		          			</button>
 		        		</div>
+
         			<br><br>
     				</div>
 				</div>
