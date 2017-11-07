@@ -1,0 +1,165 @@
+<div class="container" ng-controller="TableController">
+	<div class="panel panel-default">
+        <div class="panel-heading text-center">
+            <h4>{{ title }}</h4>
+        </div>
+    	<div class="panel-body">
+    		<div class = "row">
+    			<div class = "col-md-6">
+					<h3>Datos votación</h3>
+					<form class = "form-horizontal" role = "form">
+						<div class = "form-group">
+							<label for = "typeVotation" class = "col-md-4 control-label">Tipo de votación</label>
+							<div class = "col-md-6">
+								<select ng-model = "newVotation.votationType" class = "form-control">
+									<option value = ""></option>
+									<option value = "alternativo">Voto Alternativo</option>
+									<option value = "bloque">Voto por bloque</option>
+								</select>
+							</div>
+						</div>
+						<div class = "form-group">
+							<label for = "name" class = "col-md-4 control-label">Nombre Votación</label>
+							<div class = "col-md-6">
+								<input ng-model = "newVotation.title" type = "text" class = "form-control">
+							</div>
+						</div>
+						<div class = "form-group" ng-controller = "DateController">
+							<label for = "dateStart" class = "col-md-4 control-label">Fecha inicio</label>
+							<div class = "col-md-6">
+								<input ng-model = "newVotation.initDate" type = "date" id = "dateStart" class = "form-control" placeholder="yyyy-MM-dd" min = "{{ start }}" required/>
+							</div>
+						</div>
+						<div class = "form-group" ng-controller = "DateController">
+							<label for = "dateEnd" class = "col-md-4 control-label">Fecha termino</label>
+							<div class = "col-md-6">
+								<input ng-model = "newVotation.endDate" type = "date" id = "dateEnd" class = "form-control" placeholder="yyyy-MM-dd" min = "{{  endRestrict }}" required/>
+							</div>
+						</div>
+						<div class = "form-group">
+							<!--<label for = "file1" class = "col-md-4 control-label">Votantes</label>-->
+							<!--<div class = "my-button-upload-file">-->
+							<label for = "votantes" class = "col-md-4 control-label">Votantes</label>
+							<div class = "col-md-6">
+								<label for = "file-upload" class = "my-file">Escojer archivo...</label>
+								<!--<form name = "upload" ng-submit="uploadFile()">-->
+								<!--<input type = "file" name = "file" uploader-model="file" id = "file1"></form>-->
+								<input id = "file-upload" type  = "file"/>
+							</div>	
+						</div>
+
+						<div class="form-group">
+							<div class="col-md-offset-4">
+								<button ng-click="send()" type="submit" class="btn btn-default">Crear Votación</button>
+							</div>
+						</div>
+
+					</form>
+				</div>
+				<div class = "col-md-6">
+				<h3>Candidatos</h3>
+					<div class = "container-fluid">
+						<table class = "table">
+							<thead>
+							<tr>
+								<th>#</th>
+								<th>Nombre Candidato</th>
+								<!--<th>Foto</th>
+								<th>Datos</th>-->
+							</tr>
+							</thead>
+
+							<tbody>
+								<tr ng-repeat = "item in lista">
+									<td style = "cursor: not-allowed;"> {{$index + 1}} </td>
+									<td editable-td row = "{{$index}}" field ="text">{{item.text}}</td>
+									<!--<td editable-td row = "{{$index}}" field ="picture">{{item.picture}}</td>
+									<td editable-td row = "{{$index}}" field ="data">{{item.data}}</td>-->
+									<td><span class="glyphicon glyphicon-trash" style="cursor: pointer;" ng-click='eliminar(item)'></span></td>
+	            				</tr>
+							</tbody>
+						</table>
+						<div class="btn-group">
+		          			<button class="btn btn-default" ng-click='agregar()'>
+		            		<span class="glyphicon glyphicon-plus"></span>
+		          			</button>
+		        		</div>
+
+        			<br><br>
+    				</div>
+				</div>
+				<!--<div class =  "col-md-6" ng-controller = "TypeController" style="text-align: justify;">
+					<h3>Instrucciones</h3>
+					<br><br>
+					<p>1.Seleccione el tipo de votación deseada. Si desea conocer más detalles acerca de los tipos de
+						votación, visite nuestra página de servicios.</p>
+					<p>2.Escriba el nombre de la votación. Ejemplo: "Elecciones centro de estudiantes Ingeniería Informática"</p>
+					<p>3.Indique la fecha en la cuál se derá inicio a la votación. Puede señarla a través del calendario dado o indicándola por el teclado.</p>
+					<p>4.Similar al paso 3, indique la fecha de termino de la votación. La fecha de termino no puede ser anterior a la fecha de inicio.</p>
+					<p>5.Seleccione el archivo que contiene los datos de los votantes que usted permitirá que puedan votar. El archivo debe tener el siguiente formato:</p>
+					<p>Nombre completo;rut;celular;correo</p>
+					<p>Ejemplo:</p>
+					<p>Daniela Martínez Colombo;19523742-5;91253654;daniela@correo.cl</p>
+					<p>6.En la sección de candidatos debe añadir los datos solicitados para los candidatos que participaran en la elección. Para añadir otro candidato debe hacer click en el botón +, mostrado más abajo. Si desea eliminar un candidato, debe hacer click en el botón que está en la misma fila del candidato.</p>-->
+					<!--<div class = "col-md-6">
+						<img src = "../../img/teamwork.svg" width="100" height="100" ng-click = "showVotation1()" style="cursor:pointer;">
+						<p>Voto Alternativo</p>
+					</div>
+					<div class = "col-md-6">
+						<img src = "../../img/list.svg" width="100" height="100" ng-click = "showVotation2()" style="cursor:pointer;">
+						<div class = "caption">
+							<p>Voto por bloque</p>
+						</div>
+					</div>
+					<br><br>
+					<div ng-show = "show1">
+						<h5>Voto Alternativo</h5>
+						<p>En este tipo de votación se elige al ganador por mayoría absoluta de entre dos o más candidatos.</p>
+						<p>El votante deberá ordenar sus preferencias, de más preferido a menos preferido.</p>
+						<p>Para más información vea nuestra página de servicios.</p>
+					</div>
+					<div ng-show = "show2">
+						<h5>Voto por bloque</h5>
+						<p>En este tipo de votación usted puede ... .... ......</p>
+					</div>-->
+			<hr>
+			<!--<h3>Candidatos</h3>
+			<div class = "container">
+				<table class = "table">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Nombre Candidato</th>
+							<th>Foto</th>
+							<th>Datos</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr ng-repeat = "item in lista">
+							<td style = "cursor: not-allowed;"> {{$index + 1}} </td>
+							<td editable-td row = "{{$index}}" field ="name">{{item.name}}</td>
+							<td editable-td row = "{{$index}}" field ="picture">{{item.picture}}</td>
+							<td editable-td row = "{{$index}}" field ="data">{{item.data}}</td>
+							<td><span class="glyphicon glyphicon-trash" style="cursor: pointer;" ng-click='eliminar(item)'></span></td>
+            			</tr>
+					</tbody>
+				</table>
+				<div class="btn-group">
+          			<button class="btn btn-default" ng-click='agregar()'>
+            		<span class="glyphicon glyphicon-plus"></span>
+          			</button>
+        		</div>
+        		<br><br>
+        		<div id="JSON"></div>
+    		</div>-->
+    		</div>
+		</div>
+	</div>
+</div>
+
+
+         
+        
+        
+   
