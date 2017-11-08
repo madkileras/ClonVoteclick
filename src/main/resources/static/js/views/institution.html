@@ -1,0 +1,32 @@
+<div class="container" ng-controller="MainController">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h4>Nombre institución</h4>
+            </div>
+            <div class="panel-body">
+            	<table class = "table">
+            		<thead>
+            			<tr>
+	            			<th>#</th>
+		            		<th>Votación</th>
+		            		<th>Fecha inicio</th>
+		            		<th>Fecha termino</th>
+		            		<th>Ver resultados</th>
+            			</tr>
+            		</thead>
+            		<tbody>
+	            		<tr ng-repeat = "v in votation">
+							<td>{{$index+1}}
+							<td>{{v.Name}}</td>
+							<td>{{v.dateStar}}</td>
+							<td>{{v.dateEnd}}</td>
+							<td>{{v.result}}</td>
+							<td>boton</td>
+	            		</tr>
+	            	</tbody>
+            	</table>
+            </div>
+        </div>
+    </div>
+</div>
