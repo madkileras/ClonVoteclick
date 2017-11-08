@@ -6,12 +6,16 @@ import cl.voteclick.model.Vote;
 import cl.voteclick.repositories.OptionRepository;
 import cl.voteclick.repositories.VotationRepository;
 import cl.voteclick.repositories.VoteRepository;
+import org.aspectj.weaver.ast.Not;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.constraints.Null;
 
 
 @CrossOrigin
@@ -35,9 +39,31 @@ public class VotationService {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Integer getVotations(@PathVariable("id") Long id){
+    public List getVotations(@PathVariable("id") Long id){
+
+        List<Integer> lista = new ArrayList<Integer>();
+        Integer voteNull = 0;
+        Integer voteWhite = 0;
         List<Vote> votos = voteRepository.findAllByVotationsId(id);
-        return votos.size();
+        for (Vote v : votos){
+            if (v.getOption() == null && v.getIsNull()){
+                voteNull++;
+            }
+            if (v.getOption() == null && !v.getIsNull()){
+                voteWhite++;
+            }
+        }
+        lista.add(voteNull);
+        lista.add(voteWhite);
+
+        List<String> listaOpciones = new ArrayList();
+        Set<Option> options = votationRepository.findOne(id).getOptions();
+        for (Option opcion: options) {
+           listaOpciones.add(opcion.getText());
+        }
+        listaOpciones.add("Blanco");
+        listaOpciones.add("Nulo");
+        return listaOpciones;
     }
 
     @RequestMapping(value = "/institution/{id}", method = RequestMethod.GET)
