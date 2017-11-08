@@ -1,8 +1,8 @@
-<div class="container" ng-controller="MainController">
+<div class="container" ng-controller="InstitutionController">
     <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
             <div class="panel-heading text-center">
-                <h4>Nombre institución</h4>
+                <h4> Administración votaciones de {{institutionName}}</h4>
             </div>
             <div class="panel-body">
             	<table class = "table">
@@ -18,11 +18,12 @@
             		<tbody>
 	            		<tr ng-repeat = "v in votation">
 							<td>{{$index+1}}
-							<td>{{v.Name}}</td>
-							<td>{{v.dateStar}}</td>
-							<td>{{v.dateEnd}}</td>
-							<td>{{v.result}}</td>
-							<td>boton</td>
+							<td>{{v.title}}</td>
+							<td>{{v.initDate | date: 'dd/MM/yyyy' }}</td>
+							<td>{{v.endDate| date: 'dd/MM/yyyy' }}</td>
+							<td>
+								<button ng-click="show()" type="submit" class="btn btn-default">Ver</button>
+							</td>
 	            		</tr>
 	            	</tbody>
             	</table>

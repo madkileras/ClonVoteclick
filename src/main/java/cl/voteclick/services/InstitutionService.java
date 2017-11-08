@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/institutions")
@@ -21,6 +23,11 @@ public class InstitutionService {
     }
 
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Institution getOne(@PathVariable("id") Long id){
+        return institutionRepository.findOne(id);
+    }
 
     @RequestMapping( method = RequestMethod.POST)
     @PostMapping

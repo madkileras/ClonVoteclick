@@ -32,7 +32,7 @@ app.config(function($routeProvider){
         })
         .when('/institution', {
             templateUrl: 'js/views/institution.html',
-            controller: 'MainController'
+            controller: 'InstitutionController'
         })
         .otherwise({
             redirectTo: '/'
