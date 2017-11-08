@@ -49,9 +49,9 @@ INSERT INTO public.votation_voter(votation_id, voter_id) VALUES (3, 2);
 INSERT INTO public.votation_voter(votation_id, voter_id) VALUES (1, 1);
 
 
-INSERT INTO public.votes(vote_id, votations_id) VALUES (1, 1);
-INSERT INTO public.votes(vote_id, votations_id) VALUES (2, 1);
-INSERT INTO public.votes(vote_id, votations_id) VALUES (3, 4);
-INSERT INTO public.votes(vote_id, votations_id) VALUES (4, 3);
-INSERT INTO public.votes(vote_id, votations_id) VALUES (5, 5);
+INSERT INTO public.votes(vote_id, votations_id,is_null,option) VALUES (1, 1,FALSE ,1);
+INSERT INTO public.votes(vote_id, votations_id,is_null,option) VALUES (2, 1,FALSE ,2);
+INSERT INTO public.votes(vote_id, votations_id,is_null,option) VALUES (3, 4,FALSE ,1);
+INSERT INTO public.votes(vote_id, votations_id,is_null,option) VALUES (4, 3,FALSE ,null);
+INSERT INTO public.votes(vote_id, votations_id,is_null,option) VALUES (5, 5,TRUE ,null);
 

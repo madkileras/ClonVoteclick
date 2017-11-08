@@ -1,7 +1,6 @@
 package cl.voteclick.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -17,7 +16,26 @@ public class Vote {
     @JoinColumn(name = "votations_id")
     private Votation votations;
 
+    private Boolean isNull;
+
+    private Integer option;
+
     public Vote(){
+    }
+
+    public Boolean getIsNull() {
+        return isNull;
+    }
+
+    public void setIsNull(Boolean isNull){ this.isNull=isNull; }
+
+
+    public Integer getOption(){
+        return option;
+    }
+
+    public void setOption(Integer option){
+        this.option=option;
     }
 
     public Long getVoteId() {
