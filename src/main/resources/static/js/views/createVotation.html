@@ -48,11 +48,7 @@
 							</div>	
 						</div>
 
-						<div class="form-group">
-							<div class="col-md-offset-4">
-								<button ng-click="send()" type="submit" class="btn btn-default">Crear Votación</button>
-							</div>
-						</div>
+
 
 					</form>
 				</div>
@@ -72,10 +68,10 @@
 							<tbody>
 								<tr ng-repeat = "item in lista">
 									<td style = "cursor: not-allowed;"> {{$index + 1}} </td>
-									<td editable-td row = "{{$index}}" field ="text">{{item.text}}</td>
+									<td editable-td row = "{{$index+1}}" field ="text">{{item.text}}</td>
 									<!--<td editable-td row = "{{$index}}" field ="picture">{{item.picture}}</td>
 									<td editable-td row = "{{$index}}" field ="data">{{item.data}}</td>-->
-									<td><span class="glyphicon glyphicon-trash" style="cursor: pointer;" ng-click='eliminar(item)'></span></td>
+									<td><span class="glyphicon glyphicon-trash" style="cursor: pointer;" ng-click='eliminar($index)'></span></td>
 	            				</tr>
 							</tbody>
 						</table>
@@ -84,7 +80,11 @@
 		            		<span class="glyphicon glyphicon-plus"></span>
 		          			</button>
 		        		</div>
-
+						<div class="form-group">
+							<div class="col-md-offset-4">
+								<button ng-click="send()" type="submit" class="btn btn-default">Crear Votación</button>
+							</div>
+						</div>
         			<br><br>
     				</div>
 				</div>
@@ -157,6 +157,7 @@
 		</div>
 	</div>
 </div>
+
 
 
          

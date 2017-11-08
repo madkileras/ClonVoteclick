@@ -40,6 +40,14 @@ public class VotationService {
         return votos.size();
     }
 
+    @RequestMapping(value = "/institution/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Votation> getVotationsInstitution(@PathVariable("id") Long id){
+        return votationRepository.findAllByInstitutionsId (id);
+    }
+
+
+  
 
 
     @RequestMapping( method = RequestMethod.POST)

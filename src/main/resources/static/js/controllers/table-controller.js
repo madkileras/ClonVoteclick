@@ -1,4 +1,4 @@
-app.controller('TableController', ['$scope', '$location','$filter', function ($scope, $location,$filter) {
+app.controller('TableController', ['$scope', '$location','$filter','$http', function ($scope, $location,$filter,$http) {
     $scope.title = "Crear Votación";
     $scope.isActive = function (route) {
         return route === $location.path();
@@ -10,13 +10,14 @@ app.controller('TableController', ['$scope', '$location','$filter', function ($s
         initDate:'',
         endDate:'',
         options:[],
-        institutions:{name:"Tricel CEII",institutionId:2}
+        institutions:{institutionId:2}
     };
     $scope.lista = [{text: ''}];
 
     $scope.eliminar = function (row) {
         if (confirm("¿Seguro que desea eliminar?")) {
             $scope.lista.splice(row, 1);
+            console.log(row);
         }
     };
 
@@ -33,9 +34,9 @@ app.controller('TableController', ['$scope', '$location','$filter', function ($s
 
     $scope.send = function(){
         $scope.newVotation.options=$scope.lista;
-        $scope.newVotation.initDate= $filter('date')($scope.newVotation.initDate,"MM/dd/yyyy - HH:mm:ss");
-        $scope.newVotation.endDate= $filter('date')($scope.newVotation.endDate,"MM/dd/yyyy - HH:mm:ss");
-
+        $scope.newVotation.initDate= $filter('date')($scope.newVotation.initDate,"yyyy-MM-dd");
+        $scope.newVotation.endDate= $filter('date')($scope.newVotation.endDate,"yyyy-MM-dd");
+        $http.post("http://localhost:9090/votations",$scope.newVotation);
         console.log($scope.newVotation);
 
         //aca newVotation esta listo para ser utilizado en el método POST, en teoría
