@@ -40,30 +40,72 @@ public class VotationService {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public List getVotations(@PathVariable("id") Long id){
+        List listaFinal = new ArrayList<>();
+        List<Integer> listaVotos = new ArrayList<>();
+        List<String> listaOpciones = new ArrayList<>();
+        //List<Long> listaIds = new ArrayList<>();
 
-        List<Integer> lista = new ArrayList<Integer>();
+        List<Vote> votos = voteRepository.findAllByVotationsId(id);
+        /////////obtener candidatos y sus votos///////////
+        Set<Option> options = votationRepository.findOne(id).getOptions();
+        for (Option opcion: options) {
+            Integer cantidadVot = 0;
+            for (Vote v : votos){
+                Set<Integer> opcionesVotos = v.getOptions();
+                for (Integer o: opcionesVotos){
+                    String x = o.toString();
+                    if ( x.equals(opcion.getOptionId().toString())){
+                        cantidadVot++;
+                    }
+                }
+            }
+            listaVotos.add(cantidadVot);
+            //listaIds.add(opcion.getOptionId());
+            listaOpciones.add(opcion.getText());
+        }
+        /////////////////////////////////////
+
+        //CONTAR Y AGREGAR Nulos y blancos//
         Integer voteNull = 0;
         Integer voteWhite = 0;
-        List<Vote> votos = voteRepository.findAllByVotationsId(id);
-        for (Vote v : votos){
-            if (v.getOption() == null && v.getIsNull()){
+        for (Vote v : votos) {
+            Set<Integer> opcionesVotos = v.getOptions();
+            if (v.getIsNull() && opcionesVotos.size() == 0) {
                 voteNull++;
             }
-            if (v.getOption() == null && !v.getIsNull()){
+            if (!v.getIsNull() && opcionesVotos.size() == 0) {
                 voteWhite++;
             }
         }
-        lista.add(voteNull);
-        lista.add(voteWhite);
-
-        List<String> listaOpciones = new ArrayList();
-        Set<Option> options = votationRepository.findOne(id).getOptions();
-        for (Option opcion: options) {
-           listaOpciones.add(opcion.getText());
-        }
-        listaOpciones.add("Blanco");
         listaOpciones.add("Nulo");
-        return listaOpciones;
+        listaOpciones.add("Blanco");
+
+        listaVotos.add(voteNull);
+        listaVotos.add(voteWhite);
+        /////////////////////////////////////
+
+        //////Obtener Ganador///////////////
+        List<String> ganador = new ArrayList<>();
+        Integer pos = 0;
+        Integer posAux = 0;
+        Integer max = listaVotos.get(0);
+
+        for (Integer num: listaVotos){
+            if (num > max){
+                max = num;
+                posAux = pos;
+            }
+            pos++;
+        }
+        ganador.add(listaOpciones.get(posAux));
+        ganador.add(".../.../img/"+listaOpciones.get(posAux)+".png");
+
+        /////////////////////////////////////
+        listaFinal.add(listaVotos);
+        //listaFinal.add(listaIds);
+        listaFinal.add(listaOpciones);
+        listaFinal.add(ganador);
+        return listaFinal;
     }
 
     @RequestMapping(value = "/institution/{id}", method = RequestMethod.GET)
@@ -71,9 +113,6 @@ public class VotationService {
     public List<Votation> getVotationsInstitution(@PathVariable("id") Long id){
         return votationRepository.findAllByInstitutionsId (id);
     }
-
-
-  
 
 
     @RequestMapping( method = RequestMethod.POST)

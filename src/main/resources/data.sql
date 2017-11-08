@@ -51,7 +51,20 @@ INSERT INTO public.votation_voter(votation_id, voter_id) VALUES (1, 1);
 
 INSERT INTO public.votes(vote_id, votations_id,is_null,option) VALUES (1, 1,FALSE ,1);
 INSERT INTO public.votes(vote_id, votations_id,is_null,option) VALUES (2, 1,FALSE ,2);
-INSERT INTO public.votes(vote_id, votations_id,is_null,option) VALUES (3, 4,FALSE ,1);
+INSERT INTO public.votes(vote_id, votations_id,is_null,option) VALUES (3, 4,FALSE ,4);
 INSERT INTO public.votes(vote_id, votations_id,is_null,option) VALUES (4, 3,FALSE ,null);
 INSERT INTO public.votes(vote_id, votations_id,is_null,option) VALUES (5, 5,TRUE ,null);
+INSERT INTO public.votes(vote_id, votations_id,is_null,option) VALUES (6, 5,FALSE ,4);
+INSERT INTO public.votes(vote_id, votations_id,is_null,option) VALUES (7, 5,FALSE ,4);
+INSERT INTO public.votes(vote_id, votations_id,is_null,option) VALUES (8, 5,FALSE ,4);
+
+INSERT INTO public.vote_options(vote_vote_id, options) VALUES (1,1);
+INSERT INTO public.vote_options(vote_vote_id, options) VALUES (2,2);
+INSERT INTO public.vote_options(vote_vote_id, options) VALUES (3,4);
+INSERT INTO public.vote_options(vote_vote_id, options) VALUES (4,null);
+INSERT INTO public.vote_options(vote_vote_id, options) VALUES (5,null);
+INSERT INTO public.vote_options(vote_vote_id, options) VALUES (6,6);
+INSERT INTO public.vote_options(vote_vote_id, options) VALUES (7,6);
+INSERT INTO public.vote_options(vote_vote_id, options) VALUES (8,6);
+
 
