@@ -30,6 +30,10 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/votacion-result.html',
             controller: 'VotationResultController'
         })
+        .when('/institution', {
+            templateUrl: 'js/views/institution.html',
+            controller: 'MainController'
+        })
         .otherwise({
             redirectTo: '/'
         });
