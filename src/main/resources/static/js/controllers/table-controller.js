@@ -10,9 +10,11 @@ app.controller('TableController', ['$scope', '$location','$filter','$http', func
         initDate:'',
         endDate:'',
         options:[],
-        institutions:{institutionId:2}
+        institutions:{institutionId:3}
     };
     $scope.lista = [{text: ''}];
+
+
 
     $scope.eliminar = function (row) {
         if (confirm("¿Seguro que desea eliminar?")) {

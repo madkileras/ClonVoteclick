@@ -68,7 +68,7 @@
 							<tbody>
 								<tr ng-repeat = "item in lista">
 									<td style = "cursor: not-allowed;"> {{$index + 1}} </td>
-									<td editable-td row = "{{$index+1}}" field ="text">{{item.text}}</td>
+									<td editable-td row = "{{$index}}" field ="text"></td>
 									<!--<td editable-td row = "{{$index}}" field ="picture">{{item.picture}}</td>
 									<td editable-td row = "{{$index}}" field ="data">{{item.data}}</td>-->
 									<td><span class="glyphicon glyphicon-trash" style="cursor: pointer;" ng-click='eliminar($index)'></span></td>

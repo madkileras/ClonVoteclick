@@ -83,7 +83,7 @@ public class Votation {
         this.options = options;
     }
 
-    @JsonIgnore
+
     public Institution getInstitutions() {
 
         return institutions;
