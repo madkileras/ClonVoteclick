@@ -8,7 +8,6 @@ app.controller('InstitutionController', ['$scope', '$location','$filter','$http'
         $location.url('/votaciones/'+ id +'/resultado');
     };
 
-
     $scope.isActive = function(route) {
         return route === $location.path();
     };

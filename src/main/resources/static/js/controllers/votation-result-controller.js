@@ -23,6 +23,7 @@ app.controller('VotationResultController', ['$scope','$http', '$routeParams', fu
             type: 'bar',
             data: {
                 labels: $scope.votacion.candidatos,
+
                 datasets: [{
                     label: "# de votos",
                     backgroundColor: '#69BFB6',
@@ -31,14 +32,22 @@ app.controller('VotationResultController', ['$scope','$http', '$routeParams', fu
                     data: $scope.votacion.resultados
                 }]
             },
+
             options: {
                 responsive: true,
+
                 scales: {
                     xAxes: [{
                         display: true
                     }],
                     yAxes: [{
-                        display: true
+                        display: true,
+                        ticks: {
+                            suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+                            // OR //
+                            beginAtZero: true   // minimum value will be 0.
+                        }
+
                     }]
                 }
             }

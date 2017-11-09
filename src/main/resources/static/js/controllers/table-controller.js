@@ -10,7 +10,7 @@ app.controller('TableController', ['$scope', '$location','$filter','$http', func
         initDate:'',
         endDate:'',
         options:[],
-        institutions:{institutionId:3}
+        institutions:{institutionId:2}
     };
     $scope.lista = [{text: ''}];
 
