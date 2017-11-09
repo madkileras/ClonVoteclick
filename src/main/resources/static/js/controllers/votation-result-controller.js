@@ -1,43 +1,21 @@
-app.controller('VotationResultController', ['$scope', '$routeParams', function($scope, $routeParams) {
+app.controller('VotationResultController', ['$scope','$http', '$routeParams', function($scope,$http, $routeParams) {
     $scope.votacion = {};
 
-    $scope.getResults = function(id) {
-        return Number(id) === 1 ? {
-            nombre: 'Votación 1',
-            ganador: {
-                nombre: 'Candidato 1',
-                imagen: '../../img/opcion.png'
-            },
-            candidatos: [
-                'Candidato 1',
-                'Candidato 2',
-                'Candidato 3'
-            ],
-            resultados: [
-                132,
-                109,
-                82
-            ]
-        } : {
-            nombre: 'Votación 2',
-            ganador: {
-                nombre: 'Candidato 2',
-                imagen: '../../img/opcion.png'
-            },
-            candidatos: [
-                'Candidato 1',
-                'Candidato 2',
-                'Candidato 3',
-                'Candidato 4'
-            ],
-            resultados: [
-                201,
-                313,
-                298,
-                103
-            ]
-        }
-    };
+    $scope.getResultados=function(){
+        var url='http://127.0.0.1:9090/votations/'+$routeParams.id;
+
+        console.log($routeParams.id);
+        console.log(url);
+        $http.get(url).then(function(response){
+            $scope.votacion=response.data;
+            console.log($scope.votacion);
+            $scope.putGraph();
+        });
+
+    }
+
+
+
 
     $scope.putGraph = function() {
         var ctxSem = document.getElementById("resultados").getContext('2d');
@@ -68,9 +46,9 @@ app.controller('VotationResultController', ['$scope', '$routeParams', function($
     };
 
     $scope.initView = function() {
-        console.log($routeParams.id);
-        $scope.votacion = this.getResults($routeParams.id);
-        $scope.putGraph();
+        //$scope.votacion = this.getResults($routeParams.id);
+        $scope.getResultados();
+
     }
 
     $scope.initView();

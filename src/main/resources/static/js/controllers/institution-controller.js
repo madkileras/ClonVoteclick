@@ -5,7 +5,7 @@ app.controller('InstitutionController', ['$scope', '$location','$filter','$http'
         $scope.votation = response.data;});
 
 
-        $scope.isActive = function(route) {
+    $scope.isActive = function(route) {
         return route === $location.path();
     };
 

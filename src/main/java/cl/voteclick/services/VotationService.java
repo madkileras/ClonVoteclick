@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import org.springframework.web.bind.annotation.*;
@@ -39,8 +40,9 @@ public class VotationService {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public List getVotations(@PathVariable("id") Long id){
-        List listaFinal = new ArrayList<>();
+    public HashMap<String, Object> getVotations(@PathVariable("id") Long id){
+
+        HashMap<String, Object> listaFinal = new HashMap<>();
         List<Integer> listaVotos = new ArrayList<>();
         List<String> listaOpciones = new ArrayList<>();
         //List<Long> listaIds = new ArrayList<>();
@@ -85,7 +87,7 @@ public class VotationService {
         /////////////////////////////////////
 
         //////Obtener Ganador///////////////
-        List<String> ganador = new ArrayList<>();
+        HashMap<String, Object> ganador = new HashMap<>();
         Integer pos = 0;
         Integer posAux = 0;
         Integer max = listaVotos.get(0);
@@ -97,14 +99,14 @@ public class VotationService {
             }
             pos++;
         }
-        ganador.add(listaOpciones.get(posAux));
-        ganador.add(".../.../img/"+listaOpciones.get(posAux)+".png");
-
+        ganador.put("nombre",listaOpciones.get(posAux));
+        ganador.put("imagen","../../img/opcion.png");
         /////////////////////////////////////
-        listaFinal.add(listaVotos);
+        listaFinal.put("nombre",votationRepository.findOne(id).getTitle());
+        listaFinal.put("resultados", listaVotos);
         //listaFinal.add(listaIds);
-        listaFinal.add(listaOpciones);
-        listaFinal.add(ganador);
+        listaFinal.put("candidatos", listaOpciones);
+        listaFinal.put("ganador", ganador);
         return listaFinal;
     }
 
