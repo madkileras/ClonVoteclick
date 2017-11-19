@@ -3,64 +3,81 @@ package cl.voteclick.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "voters")
 public class Voter {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private long id;
     private String name;
     private String rut;
+    private String email;
+    private String phone;
+
     @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "institutions_voters",
+            joinColumns = @JoinColumn(name = "voter_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "institution_id", referencedColumnName = "id"))
     @JsonIgnore
-    @JoinTable(name = "voter_vinculated", joinColumns = @JoinColumn(name = "voter_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "institution_id", referencedColumnName = "id"))
-    private List<Institution> institutions;
+    private Set<Institution> institutions;
+
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "votation_voter", joinColumns = @JoinColumn(name = "voter_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "votation_id", referencedColumnName = "id"))
-    private List<Votation> votations;
-    public Voter(){
+    @JoinTable(name = "votations_voters",
+            joinColumns = @JoinColumn(name = "voter_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "votation_id", referencedColumnName = "id"))
+    @JsonIgnore
+    private Set<Votation> votations;
 
+    public Voter() {}
+
+    public Voter(String name,
+                 String rut,
+                 String email,
+                 String phone) {
+        this.name = name;
+        this.rut = rut;
+        this.email = email;
+        this.phone = phone;
+        this.institutions = new HashSet<>();
+        this.votations = new HashSet<>();
     }
 
-    public Long getVoterId() {
+    public long getId() {
         return id;
-    }
-
-    public void setVoterId(Long voterId) {
-        this.id = voterId;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getRut() {
         return rut;
     }
 
-    public void setRut(String rut) {
-        this.rut = rut;
+    public String getEmail() {
+        return email;
     }
 
-    public List<Institution> getInstitutions() {
+    public String getPhone() {
+        return phone;
+    }
+
+    public Set<Institution> getInstitutions() {
         return institutions;
     }
 
-    public void setInstitutions(List<Institution> institutions) {
-        this.institutions = institutions;
+    public void addInstitution(Institution institution) {
+        this.institutions.add(institution);
     }
 
-    public List<Votation> getVotations() {
+    public Set<Votation> getVotations() {
         return votations;
     }
 
-    public void setVotations(List<Votation> votations) {
-        this.votations = votations;
+    public void addVotation(Votation votation) {
+        this.votations.add(votation);
     }
 }

@@ -3,43 +3,46 @@ package cl.voteclick.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name="options")
 public class Option {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long optionId;
+    private long id;
     private String text;
+
     @ManyToOne
     @JoinColumn(name = "votation_id")
-    private Votation votations;
+    @JsonIgnore
+    private Votation votation;
 
-    public Option(){
+    @ManyToMany(mappedBy = "options")
+    private Set<Vote> votes;
 
+    public Option() {}
+
+    public Option(String text, Votation votation) {
+        this.text = text;
+        this.votation = votation;
+        this.votes = new HashSet<>();
     }
 
-    public Long getOptionId() {
-        return optionId;
-    }
-
-    public void setOptionId(Long optionId) {
-        this.optionId = optionId;
+    public long getId() {
+        return id;
     }
 
     public String getText() {
         return text;
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
-    @JsonIgnore
-    public Votation getVotations() {
-        return votations;
+    public Votation getVotation() {
+        return votation;
     }
 
-    public void setVotations(Votation votations) {
-        this.votations = votations;
+    public Set<Vote> getVotes() {
+        return this.votes;
     }
 }

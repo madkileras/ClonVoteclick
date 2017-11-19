@@ -22,15 +22,13 @@ public class InstitutionService {
         return institutionRepository.findAll();
     }
 
-
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Institution getOne(@PathVariable("id") Long id){
         return institutionRepository.findOne(id);
     }
 
-    @RequestMapping( method = RequestMethod.POST)
-    @PostMapping
+    @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public Institution create(@RequestBody Institution resource){

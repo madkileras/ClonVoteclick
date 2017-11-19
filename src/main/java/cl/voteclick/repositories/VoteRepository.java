@@ -7,6 +7,5 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Transactional
-public interface VoteRepository extends CrudRepository<Vote,Long>{
-    List<Vote> findAllByVotationsId(Long id);
+public interface VoteRepository extends CrudRepository<Vote,Long> {
 }

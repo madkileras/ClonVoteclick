@@ -6,24 +6,20 @@ import cl.voteclick.model.Vote;
 import cl.voteclick.repositories.OptionRepository;
 import cl.voteclick.repositories.VotationRepository;
 import cl.voteclick.repositories.VoteRepository;
-import org.aspectj.weaver.ast.Not;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.constraints.Null;
 
 
 @CrossOrigin
 @RestController
 @RequestMapping("/votations")
 public class VotationService {
-
     @Autowired
     VotationRepository votationRepository;
     @Autowired
@@ -31,109 +27,62 @@ public class VotationService {
     @Autowired
     VoteRepository voteRepository;
 
-
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public Iterable<Votation> getAllVotations(){
         return votationRepository.findAll();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(
+            value = "/{id}/result",
+            method = RequestMethod.GET)
     @ResponseBody
-    public HashMap<String, Object> getVotations(@PathVariable("id") Long id){
+    public HashMap<String, Object> getVotationResult(@PathVariable("id") long id){
+        HashMap<String, Object> returnList = new HashMap<>();
+        List<Integer> votesCountList = new ArrayList<>();
+        List<String> optionsList = new ArrayList<>();
 
-        HashMap<String, Object> listaFinal = new HashMap<>();
-        List<Integer> listaVotos = new ArrayList<>();
-        List<String> listaOpciones = new ArrayList<>();
-        //List<Long> listaIds = new ArrayList<>();
-
-        List<Vote> votos = voteRepository.findAllByVotationsId(id);
-        /////////obtener candidatos y sus votos///////////
-        Set<Option> options = votationRepository.findOne(id).getOptions();
-        for (Option opcion: options) {
-            Integer cantidadVot = 0;
-            for (Vote v : votos){
-                Set<Integer> opcionesVotos = v.getOptions();
-                for (Integer o: opcionesVotos){
-                    String x = o.toString();
-                    if ( x.equals(opcion.getOptionId().toString())){
-                        cantidadVot++;
-                    }
-                }
+        int voteNull = 0, voteWhite = 0, max = 0;
+        Votation votation = votationRepository.findOne(id);
+        for (Option option: votation.getOptions()) {
+            Integer votesCount = 0;
+            for (Vote vote: option.getVotes()){
+                Set<Option> voteOptions = vote.getOptions();
+                if(voteOptions.isEmpty())
+                    voteWhite++;
+                else if(voteOptions.size() > 1)
+                    voteNull++;
+                else if (voteOptions.iterator().next().getId() == option.getId())
+                    votesCount++;
             }
-            listaVotos.add(cantidadVot);
-            //listaIds.add(opcion.getOptionId());
-            listaOpciones.add(opcion.getText());
+
+            votesCountList.add(votesCount);
+            optionsList.add(option.getText());
+
+            if(votesCount > max)
+                max = votesCount;
         }
-        /////////////////////////////////////
 
-        //CONTAR Y AGREGAR Nulos y blancos//
-        Integer voteNull = 0;
-        Integer voteWhite = 0;
-        for (Vote v : votos) {
-            Set<Integer> opcionesVotos = v.getOptions();
-            if (v.getIsNull() && opcionesVotos.size() == 0) {
-                voteNull++;
-            }
-            if (!v.getIsNull() && opcionesVotos.size() == 0) {
-                voteWhite++;
-            }
-        }
-        listaOpciones.add("Nulo");
-        listaOpciones.add("Blanco");
+        optionsList.add("Nulo");
+        votesCountList.add(voteNull);
 
-        listaVotos.add(voteNull);
-        listaVotos.add(voteWhite);
-        /////////////////////////////////////
+        optionsList.add("Blanco");
+        votesCountList.add(voteWhite);
 
-        //////Obtener Ganador///////////////
-        HashMap<String, Object> ganador = new HashMap<>();
-        Integer pos = 0;
-        Integer posAux = 0;
-        Integer max = listaVotos.get(0);
+        HashMap<String, Object> winner = new HashMap<>();
+        winner.put("nombre", optionsList.get(max));
 
-        for (Integer num: listaVotos){
-            if (num > max){
-                max = num;
-                posAux = pos;
-            }
-            pos++;
-        }
-        ganador.put("nombre",listaOpciones.get(posAux));
-        ganador.put("imagen","../../img/opcion.png");
-        /////////////////////////////////////
-        listaFinal.put("nombre",votationRepository.findOne(id).getTitle());
-        listaFinal.put("resultados", listaVotos);
-        //listaFinal.add(listaIds);
-        listaFinal.put("candidatos", listaOpciones);
-        listaFinal.put("ganador", ganador);
-        return listaFinal;
+        returnList.put("nombre",votationRepository.findOne(id).getTitle());
+        returnList.put("resultados", votesCountList);
+        returnList.put("candidatos", optionsList);
+        returnList.put("ganador", winner);
+        return returnList;
     }
 
-    @RequestMapping(value = "/institution/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Votation> getVotationsInstitution(@PathVariable("id") Long id){
-        return votationRepository.findAllByInstitutionsId (id);
-    }
-
-
-  
-
-
-    @RequestMapping( method = RequestMethod.POST)
-    @PostMapping
+    @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public Votation create(@RequestBody Votation resource){
-        Votation votation= votationRepository.save(resource);
-        Set<Option> options = votation.getOptions();
-        for (Option s : options){
-            s.setVotations(votation);
-        }
-        optionRepository.save(options);
-        return votation;
+        return votationRepository.save(resource);
     }
-
-
-
 }

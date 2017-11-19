@@ -7,5 +7,4 @@ import javax.transaction.Transactional;
 
 @Transactional
 public interface VoterRepository extends CrudRepository<Voter,Long>{
-
 }

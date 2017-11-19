@@ -1,4 +1,4 @@
-app.controller('TableController', ['$scope', '$location','$filter','$http', function ($scope, $location,$filter,$http) {
+app.controller('VotationCreateController', ['$scope', '$location','$filter','$http', function ($scope, $location,$filter,$http) {
     $scope.title = "Crear Votación";
     $scope.isActive = function (route) {
         return route === $location.path();

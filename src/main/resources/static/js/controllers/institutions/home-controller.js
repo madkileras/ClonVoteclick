@@ -1,4 +1,4 @@
-app.controller('InstitutionController', ['$scope', '$location','$filter','$http', function ($scope, $location,$filter,$http){
+app.controller('InstitutionHomeController', ['$scope', '$location','$filter','$http', function ($scope, $location,$filter,$http){
     $scope.institutionName='TRICEL CEII';
 
     $http.get('http://localhost:9090/votations/institution/2').then(function(response){

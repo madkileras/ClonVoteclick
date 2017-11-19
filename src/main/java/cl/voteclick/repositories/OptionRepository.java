@@ -7,5 +7,4 @@ import javax.transaction.Transactional;
 
 @Transactional
 public interface OptionRepository extends CrudRepository<Option,Long>{
-
 }

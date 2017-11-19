@@ -3,36 +3,30 @@ var app = angular.module('VoteClick', ['ngRoute']);
 app.config(function($routeProvider){
     $routeProvider
         .when('/', {
-            templateUrl: 'js/views/index.html',
-            controller: 'MainController'
+            templateUrl: 'js/views/index.html'
         })
         .when('/servicios', {
-            templateUrl: 'js/views/services.html',
-            controller: 'MainController'
+            templateUrl: 'js/views/services.html'
         })
         .when('/nosotros', {
-            templateUrl: 'js/views/about.html',
-            controller: 'MainController'
+            templateUrl: 'js/views/about.html'
         })
         .when('/contacto', {
-            templateUrl: 'js/views/contact.html',
-            controller: 'MainController'
+            templateUrl: 'js/views/contact.html'
         })
-        .when('/registro', {
-            templateUrl: 'js/views/register.html',
-            controller: 'MainController'
+        // Institutions
+        .when('/instituciones/registro', {
+            templateUrl: 'js/views/institutions/register.html'
         })
-        .when('/nuevaVotacion', {
-            templateUrl: 'js/views/createVotation.html',
-            controller: 'TableController'
+        .when('/instituciones/inicio', {
+            templateUrl: 'js/views/institutions/home.html'
+        })
+        // Votations
+        .when('/votaciones/crear', {
+            templateUrl: 'js/views/votations/create.html'
         })
         .when('/votaciones/:id/resultado', {
-            templateUrl: 'js/views/votacion-result.html',
-            controller: 'VotationResultController'
-        })
-        .when('/institution', {
-            templateUrl: 'js/views/institution.html',
-            controller: 'InstitutionController'
+            templateUrl: 'js/views/result.html'
         })
         .otherwise({
             redirectTo: '/'

@@ -3,57 +3,91 @@ package cl.voteclick.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
-@Table(name="institutions")
+@Table(name = "institutions")
 public class Institution {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private long id;
     private String name;
-    @OneToMany(mappedBy= "institutions", fetch=FetchType.EAGER)
+    private String rut;
+    private String description;
+    private String email;
+    private String phone;
+
+    @OneToMany(mappedBy = "institution", fetch = FetchType.EAGER)
     @JsonIgnore
-    private List<Votation> votations;
+    private Set<Votation> votations;
+
     @ManyToMany(mappedBy = "institutions")
-    private List<Voter> voters;
-    public Institution(){
+    @JsonIgnore
+    private Set<Voter> voters;
 
+    private boolean blocked;
+
+    @PrePersist
+    public void onCreate() {
+        this.blocked = true;
     }
 
-    public Institution(String name){
+    public Institution() {}
 
-        this.name=name;
-
+    public Institution(String name,
+                       String rut,
+                       String email,
+                       String phone) {
+        this.name = name;
+        this.rut = rut;
+        this.email = email;
+        this.phone = phone;
+        this.voters = new HashSet<>();
+        this.votations = new HashSet<>();
     }
-    public Long getInstitutionId() {
+
+    public long getId() {
         return id;
-    }
-
-    public void setInstitutionId(Long institutionId) {
-        this.id = institutionId;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getRut() {
+        return rut;
     }
-    @JsonIgnore
-    public List<Votation> getVotations() {
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public Set<Votation> getVotations() {
         return votations;
     }
 
-    public void setVotations(List<Votation> votations) {
-        this.votations = votations;
+    public void addVotation(Votation votation) {
+        this.votations.add(votation);
     }
-    @JsonIgnore
-    public List<Voter> getVoters() {
+
+    public Set<Voter> getVoters() {
         return voters;
     }
 
-    public void setVoters(List<Voter> voters) {
-        this.voters = voters;
+    public void addVoter(Voter voter) {
+        this.voters.add(voter);
+    }
+
+    public boolean isBlocked() {
+        return blocked;
     }
 }
