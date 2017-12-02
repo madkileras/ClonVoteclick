@@ -15,7 +15,7 @@ app.controller('VotationVoteController', ['$scope','$http', '$routeParams', '$wi
     $scope.toggleOption = function(optionId) {
         if($scope.options.includes(optionId))
             $scope.options.splice($scope.options.indexOf(optionId), 1);
-        elseg
+        else
             $scope.options.push(optionId);
     };
 
