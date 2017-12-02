@@ -20,6 +20,7 @@ public class Option {
     private Votation votation;
 
     @ManyToMany(mappedBy = "options")
+    @JsonIgnore
     private Set<Vote> votes;
 
     public Option() {}
@@ -42,7 +43,12 @@ public class Option {
         return votation;
     }
 
+    public void setVotations(Votation votation){
+        this.votation=votation;
+    }
+
     public Set<Vote> getVotes() {
         return this.votes;
     }
 }
+

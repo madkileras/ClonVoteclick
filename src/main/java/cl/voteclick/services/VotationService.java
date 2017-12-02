@@ -87,10 +87,18 @@ public class VotationService {
         return returnList;
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping( method = RequestMethod.POST)
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public Votation create(@RequestBody Votation resource){
-        return votationRepository.save(resource);
+        Votation votation= votationRepository.save(resource);
+        Set<Option> options = votation.getOptions();
+        for (Option s : options){
+            s.setVotations(votation);
+        }
+        optionRepository.save(options);
+        return votation;
     }
 }
+

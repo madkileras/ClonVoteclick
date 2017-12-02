@@ -1,3 +1,4 @@
+
 <div class="container" ng-controller="VotationCreateController">
     <div class="panel panel-default">
         <div class="panel-heading text-center">
@@ -11,10 +12,10 @@
                         <div class="form-group">
                             <label for="typeVotation" class="col-md-4 control-label">Tipo de votación</label>
                             <div class="col-md-6">
-                                <select ng-model="newVotation.votationType" class="form-control">
+                                <select ng-model="newVotation.type" class="form-control">
                                     <option value=""></option>
-                                    <option value="alternativo">Voto Alternativo</option>
-                                    <option value="preferencial">Voto Preferencial</option>
+                                    <option value="ALTERNATIVO">Voto Alternativo</option>
+                                    <option value="PREFERENCIAL">Voto Preferencial</option>
                                 </select>
                             </div>
                         </div>
@@ -168,4 +169,5 @@
          
         
         
+
    
