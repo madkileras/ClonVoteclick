@@ -34,6 +34,9 @@ app.config(function($routeProvider){
         .when('/votaciones/:id/votar', {
             templateUrl: 'js/views/votations/vote.html'
         })
+        .when('/instituciones/adminCuentas', {
+            templateUrl: 'js/views/institutions/adminCuentas.html'
+        })
         .otherwise({
             redirectTo: '/'
         });
