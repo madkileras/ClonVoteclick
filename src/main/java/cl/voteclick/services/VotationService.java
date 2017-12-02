@@ -34,6 +34,14 @@ public class VotationService {
     }
 
     @RequestMapping(
+            value = "/{id}",
+            method = RequestMethod.GET)
+    @ResponseBody
+    public Votation getVotationById(@PathVariable("id") long id) {
+        return votationRepository.findOne(id);
+    }
+
+    @RequestMapping(
             value = "/{id}/result",
             method = RequestMethod.GET)
     @ResponseBody

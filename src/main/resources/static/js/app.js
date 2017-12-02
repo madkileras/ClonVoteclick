@@ -26,7 +26,10 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/votations/create.html'
         })
         .when('/votaciones/:id/resultado', {
-            templateUrl: 'js/views/result.html'
+            templateUrl: 'js/views/votations/result.html'
+        })
+        .when('/votaciones/:id/votar', {
+            templateUrl: 'js/views/votations/vote.html'
         })
         .otherwise({
             redirectTo: '/'

@@ -1,0 +1,31 @@
+<div class="container" ng-controller="VotationVoteController">
+    <div class="col-md-10 col-md-offset-1">
+        <div ng-if="view.sendError" class="alert alert-danger alert-dismissable">
+            <a class="close" aria-label="close" ng-click="view.sendError = false">&times;</a>
+            <strong>¡Oh no!</strong> Ha ocurrido un error al enviar el voto. Intente nuevamente en unos instantes.
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h4>{{ votation.title }}</h4>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-4" ng-repeat="option in votation.options">
+                    <div class="thumbnail">
+                        <img src="../../../img/opcion.png" alt="...">
+                        <div class="caption">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-click="toggleOption(option.id)">
+                                    <span class="box"></span>&emsp;{{ option.text }}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-success" ng-click="send()" role="button">Enviar voto</button>
+            </div>
+        </div>
+    </div>
+</div>
