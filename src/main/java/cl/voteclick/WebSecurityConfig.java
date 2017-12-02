@@ -1,3 +1,4 @@
+
 package cl.voteclick;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
             .authorizeRequests()
-                .antMatchers("/", "/home", "/css/**", "/js/**", "/img/**","/votations/**","/institutions/**").permitAll()
+                .antMatchers("/", "/home", "/css/**", "/js/**", "/img/**","/votations/**","/institutions/**","/votes/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
@@ -31,3 +32,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("user").password("password").roles("USER");
     }
 }
+

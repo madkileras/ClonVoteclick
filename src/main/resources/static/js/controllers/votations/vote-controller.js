@@ -6,7 +6,7 @@ app.controller('VotationVoteController', ['$scope','$http', '$routeParams', '$wi
 
     $scope.votation = {};
     $scope.vote = {
-        votation: { id: $scope.votation.id },
+        votation: {},
         options: []
     };
 
@@ -20,13 +20,17 @@ app.controller('VotationVoteController', ['$scope','$http', '$routeParams', '$wi
     };
 
     $scope.send = function () {
+        console.log($scope.votation.options);
+        console.log($scope.options);
         if($scope.options.length === 0 && !confirm("El voto está en blanco. ¿Desea enviarlo de todas formas?")) return;
         if($scope.options.length > 1 && !confirm("El voto es nulo. ¿Desea enviarlo de todas formas?")) return;
 
         $scope.vote.options = [];
-        for(var optionId in $scope.options)
+        $scope.options.forEach(function(optionId) {
             $scope.vote.options.push({ id: optionId });
+        });
 
+        console.log($scope.vote);
         $http.post("http://localhost:9090/votes", $scope.vote)
             .then(function() {
                 $window.history.back();
@@ -40,6 +44,7 @@ app.controller('VotationVoteController', ['$scope','$http', '$routeParams', '$wi
         $http.get("http://localhost:9090/votations/" + $routeParams.id)
             .then(function(response) {
                 $scope.votation = response.data;
+                $scope.vote.votation = { id: $scope.votation.id };
             });
     };
     $scope.getVotation();

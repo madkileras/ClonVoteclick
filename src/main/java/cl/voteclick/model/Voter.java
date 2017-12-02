@@ -81,3 +81,4 @@ public class Voter {
         this.votations.add(votation);
     }
 }
+
