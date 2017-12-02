@@ -29,40 +29,28 @@
     <title>VoteClick - {{ title }}</title>
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header" style="padding-top: 0.6em; padding-right: 3em;">
-                <img class="img-responsive" style="height: 2em;" src="img/brand-icon.png" alt="Logo plataforma"></img>
+    <div ng-controller="MainController">
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header" style="padding-top: 0.6em; padding-right: 3em;">
+                    <img class="img-responsive" style="height: 2em;" src="img/brand-icon.png" alt="Logo plataforma"/>
+                </div>
+                <div class="collapse navbar-collapse" id="app-navbar-collapse" style="padding-left: 10em">
+                    <div ng-include="template"></div>
+                </div>
             </div>
-
-            <div class="collapse navbar-collapse" id="app-navbar-collapse" style="padding-left: 10em">
-                <!-- Left Side Of Navbar -->
-                <a href="#!/" class="btn navbar-btn" ng-class="{ active: isActive('/') }" role="button">Inicio</a>
-                <a href="#!/servicios" class="btn navbar-btn" ng-class="{ active: isActive('/servicios') }" role="button">Servicios</a>
-                <a href="#!/nosotros" class="btn navbar-btn" ng-class="{ active: isActive('/nosotros') }" role="button">Nosotros</a>
-                <a href="#!/contacto" class="btn navbar-btn" ng-class="{ active: isActive('/contacto') }" role="button">Contacto</a>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-right">
-                    <a href="#" class="btn navbar-btn" role="button">Iniciar sesión</a>
-                    <a href="#!/registro" class="btn navbar-btn" ng-class="{ active: isActive('/registro') }" role="button">Registrarse</a>
-                    <a href="#!/nuevaVotacion" class="btn navbar-btn" ng-class="{ active: isActive('/nuevaVotacion') }" role="button">Crear Votación</a>
-                </ul>
-
-            </div>
-        </div>
-    </nav>
-    <main>
+        </nav>
         <div ng-view></div>
-    </main>
+    </div>
 
     <!-- App JS -->
     <script src="js/app.js"></script>
     <!-- Angular Controllers -->
     <script src="js/controllers/date-controller.js"></script>
     <script src="js/controllers/main-controller.js"></script>
-    <script src="js/controllers/table-controller.js"></script>
-    <script src="js/controllers/votation-result-controller.js"></script>
-    <script src="js/controllers/type-controller.js"></script>
+    <script src="js/controllers/votations/create-controller.js"></script>
+    <script src="js/controllers/votations/result-controller.js"></script>
+    <script src="js/controllers/institutions/home-controller.js"></script>
+    <script src="js/controllers/votations/type-controller.js"></script>
 </body>
 </html>

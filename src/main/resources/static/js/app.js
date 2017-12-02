@@ -21,6 +21,9 @@ app.config(function($routeProvider){
         .when('/instituciones/inicio', {
             templateUrl: 'js/views/institutions/home.html'
         })
+        .when('/instituciones/perfil/:id', {
+            templateUrl: 'js/views/institutions/perfil.html'
+        })
         // Votations
         .when('/votaciones/crear', {
             templateUrl: 'js/views/votations/create.html'
