@@ -42,6 +42,10 @@ public class Option {
         return votation;
     }
 
+    public void setVotations(Votation votation){
+        this.votation=votation;
+    }
+
     public Set<Vote> getVotes() {
         return this.votes;
     }
