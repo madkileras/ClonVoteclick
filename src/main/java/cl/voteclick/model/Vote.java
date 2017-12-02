@@ -1,3 +1,4 @@
+
 package cl.voteclick.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,7 +20,7 @@ public class Vote {
     private Votation votation;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "options_votes",
+    @JoinTable(name = "option_vote",
             joinColumns = @JoinColumn(name = "option_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "vote_id", referencedColumnName = "id"))
 
@@ -39,3 +40,4 @@ public class Vote {
         return votation;
     }
 }
+

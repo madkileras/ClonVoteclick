@@ -1,3 +1,4 @@
+
 app.controller('VotationCreateController', ['$scope', '$location','$filter','$http', function ($scope, $location,$filter,$http) {
     $scope.title = "Crear Votación";
     $scope.isActive = function (route) {
@@ -6,11 +7,11 @@ app.controller('VotationCreateController', ['$scope', '$location','$filter','$ht
 
     $scope.newVotation = {
         title:'',
-        type:'',
+        votationType:'',
         initDate:'',
         endDate:'',
         options:[],
-        institution:{id:2}
+        institutions:{institutionId:2}
     };
     $scope.lista = [{text: ''}];
 
@@ -36,8 +37,8 @@ app.controller('VotationCreateController', ['$scope', '$location','$filter','$ht
 
     $scope.send = function(){
         $scope.newVotation.options=$scope.lista;
-        $scope.newVotation.initDate= $filter('date')($scope.newVotation.initDate,"dd/MM/yyyy' a las 'HH:mm");
-        $scope.newVotation.endDate= $filter('date')($scope.newVotation.endDate,"dd/MM/yyyy' a las 'HH:mm");
+        $scope.newVotation.initDate= $filter('date')($scope.newVotation.initDate,"yyyy-MM-dd");
+        $scope.newVotation.endDate= $filter('date')($scope.newVotation.endDate,"yyyy-MM-dd");
         $http.post("http://localhost:9090/votations",$scope.newVotation);
         console.log($scope.newVotation);
 
@@ -62,4 +63,5 @@ app.directive('editableTd', [function () {
             });
         }
     };
+
 }]);

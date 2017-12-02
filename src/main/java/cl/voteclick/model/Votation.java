@@ -3,7 +3,6 @@ package cl.voteclick.model;
 import cl.voteclick.utils.VotationType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -85,7 +84,7 @@ public class Votation {
     public Set<Vote> getVotes() {
         return this.votes;
     }
-    @JsonIgnoreProperties("votation")
+
     public Set<Option> getOptions() {
         return options;
     }
@@ -110,3 +109,4 @@ public class Votation {
         return secondRound;
     }
 }
+
