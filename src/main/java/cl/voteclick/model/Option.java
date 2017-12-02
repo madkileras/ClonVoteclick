@@ -1,6 +1,7 @@
 package cl.voteclick.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -38,6 +39,10 @@ public class Option {
         return text;
     }
 
+    public void setVotations(Votation votation){
+        this.votation = votation;
+    }
+    @JsonIgnoreProperties("options")
     public Votation getVotation() {
         return votation;
     }

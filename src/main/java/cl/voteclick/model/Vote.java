@@ -22,7 +22,7 @@ public class Vote {
     @JoinTable(name = "options_votes",
             joinColumns = @JoinColumn(name = "option_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "vote_id", referencedColumnName = "id"))
-    @JsonIgnore
+
     private Set<Option> options;
 
     public Vote() {}
