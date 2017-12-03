@@ -47,6 +47,14 @@ body {
     background: #CFCFCF !important;
 }
 
+.resultado {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Otros elementos */
 a {
     color: var(--main-color);
@@ -113,4 +121,30 @@ input[type="checkbox"]:checked + .box:before {
     border-color: #fff;
     content: '';
     z-index: 10000;
+}
+
+.table > tbody > tr:hover {
+  background-color: #F2F2F2;
+  cursor: pointer;
+}
+
+.btn-default{
+    background-color: #1e9387;
+    border-color: #1e9387;
+}
+
+input[type="file"]{
+    display:none;
+}
+
+.my-file{
+    display:inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  
+}
+
+.btn-group-vertical{
+
+   
 }
