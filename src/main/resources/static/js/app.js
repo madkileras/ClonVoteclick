@@ -43,6 +43,9 @@ app.config(function($routeProvider){
         .when('/instituciones/adminCuentas', {
             templateUrl: 'js/views/institutions/adminCuentas.html'
         })
+        .when('/login',{
+            templateUrl: 'js/views/templates/login.html'
+        })
         .otherwise({
             redirectTo: '/'
         });
