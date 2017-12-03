@@ -28,6 +28,12 @@ app.config(function($routeProvider){
         .when('/votaciones/crear', {
             templateUrl: 'js/views/votations/create.html'
         })
+        //resgitro usuario
+
+        .when('/registrarusuario', {
+            templateUrl: 'js/views/userRegistration.html'
+        })
+
         .when('/votaciones/:id/resultado', {
             templateUrl: 'js/views/votations/result.html'
         })
@@ -36,6 +42,9 @@ app.config(function($routeProvider){
         })
         .when('/instituciones/adminCuentas', {
             templateUrl: 'js/views/institutions/adminCuentas.html'
+        })
+        .when('/login',{
+            templateUrl: 'js/views/templates/login.html'
         })
         .otherwise({
             redirectTo: '/'
