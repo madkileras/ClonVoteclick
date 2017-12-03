@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-
 @CrossOrigin
 @RestController
 @RequestMapping("/voters")
@@ -20,5 +19,4 @@ public class VoterService {
     public Voter create(@RequestBody Voter resource){
         return voterRepository.save(resource);
     }
-
 }

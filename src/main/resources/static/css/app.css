@@ -55,6 +55,15 @@ body {
     justify-content: center;
 }
 
+.voter {
+    margin-right: 0.5em;
+}
+
+.voter-close {
+    color: white;
+    cursor: pointer;
+}
+
 /* Otros elementos */
 a {
     color: var(--main-color);

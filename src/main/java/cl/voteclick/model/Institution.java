@@ -24,11 +24,9 @@ public class Institution {
 
     //RECIENTE: one to may a census
     @OneToMany(mappedBy = "institution", fetch=FetchType.EAGER)
-    @JsonIgnore
     private Set<Census> censuses;
 
     @ManyToMany(mappedBy = "institutions")
-    @JsonIgnore
     private Set<Voter> voters;
 
     private boolean blocked;

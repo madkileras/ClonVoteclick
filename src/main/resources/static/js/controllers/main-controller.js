@@ -4,5 +4,5 @@ app.controller('MainController', ['$scope', '$location', function($scope, $locat
 
 	$scope.isActive = function(route) {
         return route === $location.path();
-    }
+    };
 }]);
