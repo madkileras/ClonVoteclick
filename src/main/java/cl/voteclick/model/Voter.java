@@ -25,7 +25,7 @@ public class Voter {
     private Set<Institution> institutions;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "votations_voters",
+    @JoinTable(name = "votation_voter",
             joinColumns = @JoinColumn(name = "voter_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "votation_id", referencedColumnName = "id"))
     @JsonIgnore
