@@ -26,12 +26,11 @@
         <div class="col-md-5">
             <div class="panel panel-default">
                 <div class="panel-heading text-center">
-                    <h4>Lista de votantes</h4>
+                    <input type = "text" id ="nombreVotacion" class = "form-control" placeholder="Ingrese nombre votación"> 
                 </div>
                 <div class="panel-body">
-                    <div class="checkbox" ng-repeat = "v in chosenVoters">
+                    <div  ng-repeat = "v in chosenVoters">
                         <label>
-                            <input type="checkbox">
                             <span class="box"></span>&emsp;{{v.name}}
                         </label>
                     </div>

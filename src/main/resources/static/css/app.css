@@ -145,6 +145,13 @@ input[type="file"]{
 }
 
 .btn-group-vertical{
-
-   
+  
 }
+
+#nombreVotacion{
+    background-color: transparent !important;
+    border:none; 
+    color: #eee !important;
+}
+
+.form-control::-webkit-input-placeholder { color: white; }
