@@ -8,7 +8,7 @@
                 <div class="panel-body">
                     <div class="checkbox" ng-repeat="v in voters">
                         <label>
-                            <input type="checkbox" checklist-model = "chosenVoters" data-checklist-value="v">
+                            <input type="checkbox" checklist-model = "associates" data-checklist-value="v">
                             <span class="box"></span>&emsp;{{v.name}}
                         </label>
                     </div>
@@ -18,7 +18,7 @@
     
         <div class = "col-md-2 text-center">
             <div class = "btn-group-vertical">
-                <button ng-click= "agregar(voters.indexOf(v))" type = "submit" class = "btn btn-default">Elegir</button>
+                <button ng-click= "mostrar()" type = "submit" class = "btn btn-default">Elegir</button>
                 <br>
                 <button type = "button" class = "btn btn-default">Eliminar</button>   
             </div>
@@ -26,10 +26,10 @@
         <div class="col-md-5">
             <div class="panel panel-default">
                 <div class="panel-heading text-center">
-                    <input type = "text" id ="nombreVotacion" class = "form-control" placeholder="Ingrese nombre votación"> 
+                    <input type = "text" id = "name" name = "nombre" class = "form-control" placeholder="Ingrese nombre votación"> 
                 </div>
                 <div class="panel-body">
-                    <div  ng-repeat = "v in chosenVoters">
+                    <div  ng-repeat = "v in associates">
                         <label>
                             <span class="box"></span>&emsp;{{v.name}}
                         </label>
