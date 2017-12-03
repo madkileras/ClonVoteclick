@@ -2,7 +2,7 @@ app.controller('VotationResultController', ['$scope','$http', '$routeParams', fu
     $scope.votacion = {};
 
     $scope.getResultados=function(){
-        var url='http://127.0.0.1:9090/votations/'+$routeParams.id;
+        var url='http://localhost:9090/votations/'+$routeParams.id+'/result';
 
         console.log($routeParams.id);
         console.log(url);
