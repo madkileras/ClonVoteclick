@@ -21,12 +21,21 @@ app.config(function($routeProvider){
         .when('/instituciones/inicio', {
             templateUrl: 'js/views/institutions/home.html'
         })
+        .when('/instituciones/perfil/:id', {
+            templateUrl: 'js/views/institutions/perfil.html'
+        })
         // Votations
         .when('/votaciones/crear', {
             templateUrl: 'js/views/votations/create.html'
         })
         .when('/votaciones/:id/resultado', {
-            templateUrl: 'js/views/result.html'
+            templateUrl: 'js/views/votations/result.html'
+        })
+        .when('/votaciones/:id/votar', {
+            templateUrl: 'js/views/votations/vote.html'
+        })
+        .when('/instituciones/adminCuentas', {
+            templateUrl: 'js/views/institutions/adminCuentas.html'
         })
         .otherwise({
             redirectTo: '/'

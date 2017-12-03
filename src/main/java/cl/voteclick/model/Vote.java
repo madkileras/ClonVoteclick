@@ -1,3 +1,4 @@
+
 package cl.voteclick.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -10,19 +11,18 @@ import java.util.Set;
 @Table(name = "votes")
 public class Vote {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
     @ManyToOne
     @JoinColumn(name = "votation_id")
-    @JsonIgnoreProperties("options")
+    @JsonIgnore
     private Votation votation;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "options_votes",
             joinColumns = @JoinColumn(name = "option_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "vote_id", referencedColumnName = "id"))
-
     private Set<Option> options;
 
     public Vote() {}
@@ -35,7 +35,12 @@ public class Vote {
         return options;
     }
 
+    public void setOptions(Set<Option> options) {
+        this.options = options;
+    }
+
     public Votation getVotation() {
         return votation;
     }
 }
+

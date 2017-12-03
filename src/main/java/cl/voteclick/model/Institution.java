@@ -1,8 +1,6 @@
 package cl.voteclick.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -77,7 +75,7 @@ public class Institution {
     public String getPhone() {
         return phone;
     }
-    @JsonIgnoreProperties("votation")
+
     public Set<Votation> getVotations() {
         return votations;
     }
@@ -98,3 +96,4 @@ public class Institution {
         return blocked;
     }
 }
+

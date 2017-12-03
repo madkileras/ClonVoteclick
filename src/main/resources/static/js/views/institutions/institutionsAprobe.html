@@ -1,0 +1,34 @@
+<div class = "container">
+	<div class = "panel panel-default">
+		<div class  = "panel-heading text-center">
+			<h4>Instituciones</h4>
+		</div>
+		<div class = "panel-body">
+			<div class = "container-fluid">
+				<div class = "row">
+					<div class = "col-sm-1"></div>
+					<div class = "col-sm-10">
+						<table class = "table">
+							<thead>
+								<tr>
+									<th>Nombre Institución</th>
+									<th>Permitir</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat = "i in institutions">
+									<td>{{i.name}}</td>
+									<!--<td id = "toogleButton"></td>-->
+								</tr>
+							</tbody>
+						</table>
+			        </div>
+			        <div class = "col-sm-1"></div>
+			    </div>
+	        	<div class="form-group col-sm-offset-1">
+	            	<button ng-click="save()" type="submit" class="btn btn-default">Guardar</button>  
+	        	</div>
+			</div>
+		</div>	
+	</div>
+</div>	

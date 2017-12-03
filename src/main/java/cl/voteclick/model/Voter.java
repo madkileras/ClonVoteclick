@@ -25,7 +25,7 @@ public class Voter {
     private Set<Institution> institutions;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "votation_voter",
+    @JoinTable(name = "votations_voters",
             joinColumns = @JoinColumn(name = "voter_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "votation_id", referencedColumnName = "id"))
     @JsonIgnore
@@ -127,3 +127,4 @@ public class Voter {
         this.votations = new HashSet<>();
     }
 }
+
