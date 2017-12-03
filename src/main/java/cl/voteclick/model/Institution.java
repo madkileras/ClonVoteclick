@@ -76,6 +76,14 @@ public class Institution {
         return phone;
     }
 
+    public Set<Census> getCensuses() {
+        return censuses;
+    }
+
+    public void setCensuses(Set<Census> censuses) {
+        this.censuses = censuses;
+    }
+
     public Set<Votation> getVotations() {
         return votations;
     }

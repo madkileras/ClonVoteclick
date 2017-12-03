@@ -21,6 +21,7 @@ public class Census {
     private Set<Voter> voters;
 
 
+
     public Set<Voter> getAssociates() {
         return voters;
     }

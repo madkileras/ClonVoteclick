@@ -64,4 +64,14 @@ INSERT INTO public.options_votes(option_id, vote_id) VALUES (6,6);
 INSERT INTO public.options_votes(option_id, vote_id) VALUES (6,7);
 INSERT INTO public.options_votes(option_id, vote_id) VALUES (6,8);
 
+INSERT INTO public.census(id, name, institution_id) VALUES (1,'Alumnos ejecu',4);
+INSERT INTO public.census(id, name, institution_id) VALUES (2,'Alumnos civil',4);
+
+
+INSERT INTO public.census_voter(voter_id, census_id) VALUES (1, 1);
+INSERT INTO public.census_voter(voter_id, census_id) VALUES (2, 1);
+INSERT INTO public.census_voter(voter_id, census_id) VALUES (3, 1);
+
+INSERT INTO public.census_voter(voter_id, census_id) VALUES (6, 2);
+
 
