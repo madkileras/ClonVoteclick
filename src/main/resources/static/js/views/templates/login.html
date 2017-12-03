@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-if="{{param.error}}">
+    Correo o contraseña inválidos.
+</div>
+<div ng-if="${param.logout}">
+    Has cerrado sesión.
+</div>
+<form th:action="@{/login}" method="post">
+    <div class="container" ng-controller="">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h4>Inicio de sesión</h4>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group text-center">
+                            <dt class="input-label">
+                                <label class="form-label f5">Correo electrónico</label>
+                            </dt>
+                            <div><input name="username" type=text placeholder="correo@usach.cl" required/></div>
+
+                        </div>
+
+                        <div class="form-group text-center">
+                            <dt class="input-label">
+                                <label class="form-label f5">Contraseña</label>
+                            </dt>
+                            <div><input type="password" name="password" placeholder="contraseña"/></div>
+                        </div>
+                        <div class="form-group button-center">
+                            <button ng-click="send()" type="submit" class="btn btn-default">Iniciar sesión</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+</body>
+</html>
