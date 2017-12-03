@@ -7,7 +7,7 @@ import java.util.Set;
 @Table(name="census")
 public class Census {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
 

@@ -2,7 +2,11 @@
 app.controller('adminCuentasController', ['$scope', '$location','$filter','$http','$routeParams',function ($scope, $location,$filter,$http,$routeParams){
     $scope.voters = [];
     $scope.associates = [];
-    $scope.votacion = [];
+    $scope.votacion = {
+        name:"",
+        institution:"",
+        associates:""
+    };
 
     $scope.getVotersData = function() {
         $http.get("http://localhost:9090/institutions/2/voters")
@@ -15,13 +19,17 @@ app.controller('adminCuentasController', ['$scope', '$location','$filter','$http
 
     $scope.guardar = function(){
     	var name = document.getElementById("name").value;
-    	var institution = {'id': $routeParams.id};
+    	var institution = {'id': 2};
     	if(name == "")
     		alert("No ha ingresado nombre de la lista");
-    	else
-    		$scope.votacion.push(name);
-    	$scope.votacion.push($scope.associates);
-    	$scope.votacion.push(institution); 	
+    	else{
+            $scope.votacion.associates=($scope.associates);
+            $scope.votacion.name=(name);
+            $scope.votacion.institution=(institution);
+            console.log($scope.votacion);
+            $http.post("http://localhost:9090/census/",$scope.votacion);
+    	}
+
     };
 
 
