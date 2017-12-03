@@ -1,4 +1,4 @@
-INSERT INTO public.institutions(id, name, blocked) VALUES (1,'Tricel Feusach', false);
+INSERT INTO public.institutions(id, name, blocked,description) VALUES (1,'Tricel Feusach', false,'Descripcion de prueba');
 INSERT INTO public.institutions(id, name, blocked) VALUES (2,'Tricel CEII', false);
 INSERT INTO public.institutions(id, name, blocked) VALUES (3,'Gobierno', false);
 INSERT INTO public.institutions(id, name, blocked) VALUES (4,'CEII 2017', false);
@@ -40,13 +40,13 @@ INSERT INTO public.options(id, text, votation_id) VALUES (8, 'Victor Maripangui'
 INSERT INTO public.options(id, text, votation_id) VALUES (9, 'Cristobal Donoso', 3);
 INSERT INTO public.options(id, text, votation_id) VALUES (10, 'Feñita', 3);
 
-INSERT INTO public.votation_voter(votation_id, voter_id) VALUES (1, 5);
-INSERT INTO public.votation_voter(votation_id, voter_id) VALUES (2, 4);
-INSERT INTO public.votation_voter(votation_id, voter_id) VALUES (3, 3);
-INSERT INTO public.votation_voter(votation_id, voter_id) VALUES (4, 2);
-INSERT INTO public.votation_voter(votation_id, voter_id) VALUES (5, 1);
-INSERT INTO public.votation_voter(votation_id, voter_id) VALUES (3, 2);
-INSERT INTO public.votation_voter(votation_id, voter_id) VALUES (1, 1);
+INSERT INTO public.votations_voters(votation_id, voter_id) VALUES (1, 5);
+INSERT INTO public.votations_voters(votation_id, voter_id) VALUES (2, 4);
+INSERT INTO public.votations_voters(votation_id, voter_id) VALUES (3, 3);
+INSERT INTO public.votations_voters(votation_id, voter_id) VALUES (4, 2);
+INSERT INTO public.votations_voters(votation_id, voter_id) VALUES (5, 1);
+INSERT INTO public.votations_voters(votation_id, voter_id) VALUES (3, 2);
+INSERT INTO public.votations_voters(votation_id, voter_id) VALUES (1, 1);
 
 INSERT INTO public.votes(id, votation_id) VALUES (1, 1);
 INSERT INTO public.votes(id, votation_id) VALUES (2, 1);
