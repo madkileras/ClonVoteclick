@@ -22,6 +22,11 @@ public class Institution {
     @JsonIgnore
     private Set<Votation> votations;
 
+    //RECIENTE: one to may a census
+    @OneToMany(mappedBy = "institution", fetch=FetchType.EAGER)
+    @JsonIgnore
+    private Set<Census> censuses;
+
     @ManyToMany(mappedBy = "institutions")
     @JsonIgnore
     private Set<Voter> voters;
@@ -69,6 +74,14 @@ public class Institution {
 
     public String getPhone() {
         return phone;
+    }
+
+    public Set<Census> getCensuses() {
+        return censuses;
+    }
+
+    public void setCensuses(Set<Census> censuses) {
+        this.censuses = censuses;
     }
 
     public Set<Votation> getVotations() {
