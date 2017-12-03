@@ -31,22 +31,54 @@ public class Voter {
     @JsonIgnore
     private Set<Votation> votations;
 
-    public Voter() {}
-
-    public Voter(String name,
-                 String rut,
-                 String email,
-                 String phone) {
-        this.name = name;
-        this.rut = rut;
-        this.email = email;
-        this.phone = phone;
-        this.institutions = new HashSet<>();
-        this.votations = new HashSet<>();
+    //RECIENTE: many to many a census
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "census_voter",
+            joinColumns = @JoinColumn(name = "voter_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "census_id", referencedColumnName = "id"))
+    @JsonIgnore
+    private Set<Census> censuses;
+    public Set<Census> getCensuses() {
+        return censuses;
     }
+
+    public void setCensuses(Set<Census> censuses) {
+        this.censuses = censuses;
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setInstitutions(Set<Institution> institutions) {
+        this.institutions = institutions;
+    }
+
+    public void setVotations(Set<Votation> votations) {
+        this.votations = votations;
+    }
+
+
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -79,5 +111,19 @@ public class Voter {
 
     public void addVotation(Votation votation) {
         this.votations.add(votation);
+    }
+
+    public Voter() {}
+
+    public Voter(String name,
+                 String rut,
+                 String email,
+                 String phone) {
+        this.name = name;
+        this.rut = rut;
+        this.email = email;
+        this.phone = phone;
+        this.institutions = new HashSet<>();
+        this.votations = new HashSet<>();
     }
 }
