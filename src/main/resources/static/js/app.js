@@ -28,6 +28,12 @@ app.config(function($routeProvider){
         .when('/votaciones/crear', {
             templateUrl: 'js/views/votations/create.html'
         })
+        //resgitro usuario
+
+        .when('/registrarusuario', {
+            templateUrl: 'js/views/userRegistration.html'
+        })
+
         .when('/votaciones/:id/resultado', {
             templateUrl: 'js/views/votations/result.html'
         })
