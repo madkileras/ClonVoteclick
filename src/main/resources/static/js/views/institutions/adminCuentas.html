@@ -6,25 +6,36 @@
                     <h4>Votantes de la institución</h4>
                 </div>
                 <div class="panel-body">
-                    <p ng-repeat = "v in voters">{{v.name}}</p>
+                    <div class="checkbox" ng-repeat="v in voters">
+                        <label>
+                            <input type="checkbox" checklist-model = "associates" data-checklist-value="v">
+                            <span class="box"></span>&emsp;{{v.name}}
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
     
         <div class = "col-md-2 text-center">
             <div class = "btn-group-vertical">
-                <button type = "button" class = "btn btn-default">Elegir</button>
+                <button ng-click= "guardar()" type = "submit" class = "btn btn-default">Guardar</button>
                 <br>
-                <button type = "button" class = "btn btn-default">Eliminar</button>   
+                <button ng-click = "todos()" type = "submit" class = "btn btn-default">Todos</button>   
+                <br>
+                <button ng-click = "limpiar()" type = "submit" class = "btn btn-default">Limpiar</button>
             </div>
         </div>    
         <div class="col-md-5">
             <div class="panel panel-default">
                 <div class="panel-heading text-center">
-                    <h4>Lista de votantes</h4>
+                    <input type = "text" id = "name" name = "nombre" class = "form-control" placeholder="Ingrese nombre votación"> 
                 </div>
                 <div class="panel-body">
-
+                    <div  ng-repeat = "v in associates">
+                        <label>
+                            <span class="box"></span>&emsp;{{v.name}}
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
