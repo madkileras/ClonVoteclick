@@ -1,6 +1,7 @@
-app.controller('adminCuentasController', ['$scope', '$location','$filter','$http', function ($scope, $location,$filter,$http){
-    $scope.voters = [];
 
+app.controller('adminCuentasController', ['$scope', '$location','$filter','$http',function ($scope, $location,$filter,$http,$checklistModel){
+    $scope.voters = [];
+    $scope.chosenVoters = [];
     $scope.getVotersData = function() {
         $http.get("http://localhost:9090/institutions/2/voters")
             .then(function (response) {
@@ -8,5 +9,12 @@ app.controller('adminCuentasController', ['$scope', '$location','$filter','$http
 
             });
     };
+
+    $scope.agregar = function(index){
+        $scope.chosenVoters.push($scope.voters[index]);
+        console.log($scope.voters[index+1]);
+
+    };
+
     $scope.getVotersData();
 }]);

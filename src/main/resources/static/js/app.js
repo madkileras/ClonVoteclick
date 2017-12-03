@@ -1,4 +1,4 @@
-var app = angular.module('VoteClick', ['ngRoute']);
+var app = angular.module('VoteClick', ['ngRoute',"checklist-model"]);
 
 app.config(function($routeProvider){
     $routeProvider
