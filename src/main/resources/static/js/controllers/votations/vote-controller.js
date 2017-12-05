@@ -1,16 +1,23 @@
 app.controller('VotationVoteController', ['$scope','$http', '$routeParams', '$window',
     function($scope, $http, $routeParams, $window) {
-    $scope.view = {
-        sendError: false
-    };
-
     $scope.votation = {};
     $scope.vote = {
         votation: {},
         options: []
     };
 
+    $scope.auth = {
+      run: '',
+      ndoc: ''
+    };
+
     $scope.options = [];
+    $scope.sendError = null;
+    $scope.voteValidation = null;
+
+    $scope.closeError = function() {
+        $scope.sendError = null;
+    };
 
     $scope.toggleOption = function(optionId) {
         if($scope.options.includes(optionId))
@@ -19,11 +26,32 @@ app.controller('VotationVoteController', ['$scope','$http', '$routeParams', '$wi
             $scope.options.push(optionId);
     };
 
+    $scope.verifyVote = function() {
+        $scope.voteValidation = null;
+        if($scope.options.length === 0)
+            $scope.voteValidation = 'blanco';
+        else if($scope.options.length > 1)
+            $scope.voteValidation = 'nulo';
+    };
+
+    $scope.authVoter = function () {
+        $scope.sendError = null;
+        $http.post("http://localhost:9090/voter/auth", $scope.auth)
+            .then(function(response) {
+                if(response.data) {
+                    $scope.send();
+                } else {
+                    $scope.sendError = 'No se pudo verificar el documento ingresado.';
+                }
+            }, function() {
+                console.log("Error al enviar el voto [AUTH]...");
+                $scope.sendError = 'No se pudo verificar el documento ingresado.';
+            });
+    };
+
     $scope.send = function () {
         console.log($scope.votation.options);
         console.log($scope.options);
-        if($scope.options.length === 0 && !confirm("El voto está en blanco. ¿Desea enviarlo de todas formas?")) return;
-        if($scope.options.length > 1 && !confirm("El voto es nulo. ¿Desea enviarlo de todas formas?")) return;
 
         $scope.vote.options = [];
         $scope.options.forEach(function(optionId) {
@@ -36,7 +64,7 @@ app.controller('VotationVoteController', ['$scope','$http', '$routeParams', '$wi
                 $window.history.back();
             }, function() {
                 console.log("Error al enviar el voto...");
-                $scope.view.sendError = true;
+                $scope.sendError = 'Ocurrió un error al enviar el voto.';
             });
     };
 
