@@ -15,8 +15,6 @@ public class Vote {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "votation_id")
-    @JsonIgnore
     private Votation votation;
 
     @ManyToMany(cascade = CascadeType.ALL)

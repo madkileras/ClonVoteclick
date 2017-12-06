@@ -35,7 +35,7 @@ public class VoteService {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public Vote create(@RequestBody Vote resource){
+    public Vote create(@RequestBody Vote resource) {
         Set<Option> options = new HashSet<>();
         for(Option option: resource.getOptions()) {
             System.out.println("ID: " + option.getId());

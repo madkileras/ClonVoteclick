@@ -36,7 +36,7 @@ app.controller('VotationVoteController', ['$scope','$http', '$routeParams', '$wi
 
     $scope.authVoter = function () {
         $scope.sendError = null;
-        $http.post("http://localhost:9090/voter/auth", $scope.auth)
+        $http.post("http://localhost:9090/voters/auth", $scope.auth)
             .then(function(response) {
                 if(response.data) {
                     $scope.send();
@@ -50,9 +50,6 @@ app.controller('VotationVoteController', ['$scope','$http', '$routeParams', '$wi
     };
 
     $scope.send = function () {
-        console.log($scope.votation.options);
-        console.log($scope.options);
-
         $scope.vote.options = [];
         $scope.options.forEach(function(optionId) {
             $scope.vote.options.push({ id: optionId });
