@@ -16,6 +16,7 @@ public class Voter {
     private String rut;
     private String email;
     private String phone;
+    private String password;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "institutions_voters",
@@ -38,6 +39,7 @@ public class Voter {
             inverseJoinColumns = @JoinColumn(name = "census_id", referencedColumnName = "id"))
     @JsonIgnore
     private Set<Census> censuses;
+
     public Set<Census> getCensuses() {
         return censuses;
     }
@@ -45,7 +47,6 @@ public class Voter {
     public void setCensuses(Set<Census> censuses) {
         this.censuses = censuses;
     }
-
 
     public void setName(String name) {
         this.name = name;
@@ -70,8 +71,6 @@ public class Voter {
     public void setVotations(Set<Votation> votations) {
         this.votations = votations;
     }
-
-
 
     public long getId() {
         return id;
@@ -113,12 +112,21 @@ public class Voter {
         this.votations.add(votation);
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public Voter() {}
 
     public Voter(String name,
                  String rut,
                  String email,
-                 String phone) {
+                 String phone,
+                 String password) {
         this.name = name;
         this.rut = rut;
         this.email = email;

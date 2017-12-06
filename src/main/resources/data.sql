@@ -4,12 +4,12 @@ INSERT INTO public.institutions(id, name, blocked) VALUES (3,'Gobierno', false);
 INSERT INTO public.institutions(id, name, blocked) VALUES (4,'CEII 2017', false);
 INSERT INTO public.institutions(id, name, blocked) VALUES (5,'DIINF', false);
 
-INSERT INTO public.voters(id, name, rut) VALUES (1, 'Nicolas Paredes Angulo', '18702792-6');
-INSERT INTO public.voters(id, name, rut) VALUES (2, 'Natalia Guzman', '20789987-9');
-INSERT INTO public.voters(id, name, rut) VALUES (3, 'Enrique Aviles Moroso', '19668754-1');
-INSERT INTO public.voters(id, name, rut) VALUES (4, 'Cristian Sepulveda Cabas', '17502537-9');
-INSERT INTO public.voters(id, name, rut) VALUES (5, 'Camilo Ayala Lopez', '11841742-0');
-INSERT INTO public.voters(id, name, rut) VALUES (6, 'Marcela Gatica Zamorano', '13987741-5');
+INSERT INTO public.voters(id, name, rut, password) VALUES (1, 'Nicolas Paredes Angulo', '18702792-6', '12345');
+INSERT INTO public.voters(id, name, rut, password) VALUES (2, 'Natalia Guzman', '20789987-9', '12345');
+INSERT INTO public.voters(id, name, rut, password) VALUES (3, 'Enrique Aviles Moroso', '19668754-1', '12345');
+INSERT INTO public.voters(id, name, rut, password) VALUES (4, 'Cristian Sepulveda Cabas', '17502537-9', '12345');
+INSERT INTO public.voters(id, name, rut, password) VALUES (5, 'Camilo Ayala Lopez', '11841742-0', '12345');
+INSERT INTO public.voters(id, name, rut, password) VALUES (6, 'Marcela Gatica Zamorano', '13987741-5', '12345');
 
 INSERT INTO public.institutions_voters(voter_id, institution_id) VALUES (1, 2);
 INSERT INTO public.institutions_voters(voter_id, institution_id) VALUES (1, 4);

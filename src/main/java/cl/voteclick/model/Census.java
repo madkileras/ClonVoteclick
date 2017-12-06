@@ -1,5 +1,7 @@
 package cl.voteclick.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -14,6 +16,7 @@ public class Census {
     //RECIENTE: many to one a institutions
     @ManyToOne
     @JoinColumn(name="Institution_id")
+    @JsonIgnore
     private Institution institution;
 
     //RECIENTE: many to many a voter

@@ -24,6 +24,16 @@ app.config(function($routeProvider){
         .when('/instituciones/perfil/:id', {
             templateUrl: 'js/views/institutions/perfil.html'
         })
+        .when('/instituciones/adminCuentas', {
+            templateUrl: 'js/views/institutions/adminCuentas.html'
+        })
+        // Voters
+        .when('/votantes/login', {
+            templateUrl: 'js/views/voters/login.html'
+        })
+        .when('/votantes/inicio', {
+            templateUrl: 'js/views/voters/home.html'
+        })
         // Votations
         .when('/votaciones/crear', {
             templateUrl: 'js/views/votations/create.html'
@@ -40,12 +50,15 @@ app.config(function($routeProvider){
         .when('/votaciones/:id/votar', {
             templateUrl: 'js/views/votations/vote.html'
         })
+<<<<<<< HEAD
         .when('/instituciones/adminCuentas', {
             templateUrl: 'js/views/institutions/adminCuentas.html'
         })
         .when('/login',{
             templateUrl: 'js/views/templates/login.html'
         })
+=======
+>>>>>>> backend
         .otherwise({
             redirectTo: '/'
         });

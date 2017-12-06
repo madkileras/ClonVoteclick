@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
@@ -17,6 +18,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
+
 
 
 @CrossOrigin
@@ -32,6 +34,17 @@ public class VoterService {
     public Voter create(@RequestBody Voter resource){
         return voterRepository.save(resource);
     }
+	
+	@RequestMapping(method = RequestMethod.POST,value="/validate")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public Voter validar(@RequestBody HashMap<String,String> resource){
+    	String correo = resource.getElement("email");
+    	String pass = resource.getElement("password");
+    	Voter v = findByEmailAndPassword(correo,pass);
+    	return v;
+    }
+    
 
 
     @RequestMapping(method = RequestMethod.POST, value= "/auth")
@@ -86,6 +99,7 @@ public class VoterService {
         System.out.println(voterRepository.findByEmail(email));
         return null;
     }
+
 
 
 
