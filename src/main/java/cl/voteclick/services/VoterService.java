@@ -19,4 +19,17 @@ public class VoterService {
     public Voter create(@RequestBody Voter resource){
         return voterRepository.save(resource);
     }
+	
+	@RequestMapping(method = RequestMethod.POST,value="/validate")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public Voter validar(@RequestBody HashMap<String,String> resource){
+    	String correo = resource.getElement("email");
+    	String pass = resource.getElement("password");
+    	Voter v = findByEmailAndPassword(correo,pass);
+    	return v;
+    }
+    
+
+    
 }

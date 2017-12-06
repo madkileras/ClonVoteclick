@@ -8,4 +8,7 @@ import javax.transaction.Transactional;
 @Transactional
 public interface VoterRepository extends CrudRepository<Voter,Long>{
     Voter findByRut(String rut);
+    Voter findByEmailAndPassword(String correo, String pass);
 }
+
+ 
