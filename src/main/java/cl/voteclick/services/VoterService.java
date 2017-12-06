@@ -80,4 +80,13 @@ public class VoterService {
         return false;
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/validate/{email}")
+    @ResponseBody
+    public Voter getVoter(@PathVariable("email") String email){
+        System.out.println(voterRepository.findByEmail(email));
+        return null;
+    }
+
+
+
 }
