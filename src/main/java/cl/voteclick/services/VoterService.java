@@ -39,9 +39,9 @@ public class VoterService {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public Voter validar(@RequestBody HashMap<String,String> resource){
-    	String correo = resource.getElement("email");
-    	String pass = resource.getElement("password");
-    	Voter v = findByEmailAndPassword(correo,pass);
+    	String correo = resource.get("email");
+    	String pass = resource.get("password");
+    	Voter v = voterRepository.findByEmailAndPassword(correo,pass);
     	return v;
     }
     
@@ -100,6 +100,11 @@ public class VoterService {
         return null;
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    @ResponseBody
+    public Voter getVoterId(@PathVariable("id") Long id){
+        return (voterRepository.findOne(id));
+    }
 
 
 

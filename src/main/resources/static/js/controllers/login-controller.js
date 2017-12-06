@@ -1,8 +1,8 @@
 app.controller('LoginController', ['$scope', '$location','$filter','$http','$routeParams',function ($scope, $location,$filter,$http,$routeParams) {
 
 	$scope.usuario = {
-		email = "",
-		password =""
+		email : "",
+		password :""
 	};
 
     $scope.send = function () {
@@ -10,6 +10,15 @@ app.controller('LoginController', ['$scope', '$location','$filter','$http','$rou
         var pass = document.getElementById("pass").value;
         $scope.usuario.email = (correo);
         $scope.usuario.password = (pass);
-        //$http.post("http://localhost:9090/validate/",$scope.usuario.password);
+
+        $http.post("http://localhost:9090/voters/validate",$scope.usuario).then(function(response){
+            console.log(response.data);
+            if(response.data!="")
+                $location.url('/userHome/'+response.data.id);
+            else
+                alert("Correo o contraseña incorrectas")
+        });
+
+        
     };
 }]);

@@ -50,15 +50,18 @@ app.config(function($routeProvider){
         .when('/votaciones/:id/votar', {
             templateUrl: 'js/views/votations/vote.html'
         })
-<<<<<<< HEAD
+
         .when('/instituciones/adminCuentas', {
             templateUrl: 'js/views/institutions/adminCuentas.html'
         })
         .when('/login',{
             templateUrl: 'js/views/templates/login.html'
         })
-=======
->>>>>>> backend
+
+        .when('/userHome/:id',{
+            templateUrl: 'js/views/voters/home.html'
+        })
+
         .otherwise({
             redirectTo: '/'
         });
